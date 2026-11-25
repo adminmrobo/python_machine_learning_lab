@@ -29,7 +29,7 @@ TABS = [
 
 def tab_html(t):
     mis = ''.join('<li data-m="%s"><span class="mk">○</span> %s</li>' % m for m in t['missions'])
-    back = ' · '.join('<a href="%s">%s</a>' % b for b in t['back'])
+    back = ' · '.join('<a href="%s">%s</a>' % (b[1], b[0]) for b in t['back'])
     return ('<section class="ptab" id="tab-%s" hidden><div class="wrap"><h2>%s %s</h2><div class="pr-scn">%s</div>'
             '<div class="steps"><div style="border-left:4px solid #13733a"><b>초록 — 환경 조건</b>%s</div><div style="border-left:4px solid #1e55c8"><b>파랑 — 내 결정</b>%s</div></div>'
             '<div class="panel">%s</div><section class="kpis pk"></section>'

@@ -888,7 +888,9 @@ var REL={prerequisiteOf:'먼저 알아야 함',hasLimitation:'한계',addressedB
   supersededBy:'개정으로 대체',measuredBy:'지표로 잼',appliesIn:'적용 관할'};
 function tl(t){return (TYPE[t]||[t])[0];} function tc(t){return (TYPE[t]||[0,'#9d9bb8'])[1];}
 function pn(p){return p.replace(/^lab:/,'');}
-function lab(n){return n.label?(n.label.ko||n.label.en):n.id;}
+var LG=((document.documentElement.lang||'ko')+'').slice(0,2).toLowerCase();
+function lab(n){return n.label?(n.label[LG]||n.label.ko||n.label.en):n.id;}
+function dfn(n){var d=n.definition||{};return d[LG]||d.ko||d.en||'';}
 
 /* ── 변환기 ─────────────────────────────────────────── */
 var NS='urn:lab:';
@@ -1115,7 +1117,7 @@ function mountIndex(root){
   root.innerHTML='<div class="stats"><div><b>'+KG.nodes.length+'</b><span>항목(노드)</span></div><div><b>'+KG.edges.length+'</b><span>관계</span></div>'+
     '<div><b>'+((count.Concept||0)+(count.Method||0))+'</b><span>개념·방법</span></div><div><b>'+((count.Analogy||0)+(count.BioAnalogue||0))+'</b><span>비유</span></div>'+
     '<div><b>'+csrc+'/'+claims.length+'</b><span>출처 있는 주장</span></div><div><b>'+topics+'</b><span>뼈대 주제 연결</span></div></div>'+
-    '<div class="tools"><input type="search" placeholder="찾기 — 기본키, foreign key, 정규화, JOIN …" aria-label="지식 색인 검색"></div>'+
+    '<div class="tools"><input type="search" placeholder="찾기 — KNN, 교차검증, 과적합, 회귀 …" aria-label="지식 색인 검색"></div>'+
     '<div class="tools chips" role="group" aria-label="종류"></div>'+
     '<div class="grid2"><div class="list" role="listbox" aria-label="검색 결과"></div>'+
     '<div><div class="gbox"><canvas aria-label="선택한 항목과 이웃 관계 그래프"></canvas></div><div class="legend"></div>'+
@@ -1132,7 +1134,7 @@ function mountIndex(root){
   var lg=root.querySelector('.legend'); types.forEach(function(t){lg.insertAdjacentHTML('beforeend','<span><i style="background:'+tc(t)+'"></i>'+tl(t)+'</span>');});
   lg.insertAdjacentHTML('beforeend','<span>── 화살표: 관계 방향</span>');
   inp.addEventListener('input',function(){q=inp.value.trim().toLowerCase(); render();});
-  function hay(n){return [n.id,n.label&&n.label.ko,n.label&&n.label.en,n.definition&&n.definition.ko,n.altLabel&&[].concat(n.altLabel.ko||[]).join(' ')].join(' ').toLowerCase();}
+  function hay(n){return [n.id,n.label&&n.label.ko,n.label&&n.label.en,n.definition&&n.definition.ko,n.label&&n.label[LG],n.definition&&n.definition[LG],n.altLabel&&[].concat(n.altLabel.ko||[]).join(' ')].join(' ').toLowerCase();}
   function relHtml(n){
     var h=[]; OUT[n.id].forEach(function(e){ var o=N[e.o]; var nm=o?lab(o):((KG.topicLabels||{})[e.o]||e.o.replace(/^lab:(topic|area)\//,'').replace(/-/g,' '));
       h.push('<span class="rel" data-go="'+esc(o?e.o:'')+'">'+esc(REL[pn(e.p)]||pn(e.p))+' → '+esc(nm)+'</span>');});
@@ -1144,8 +1146,8 @@ function mountIndex(root){
     arr.forEach(function(n){var d=el('div','it'+(sel===n.id?' sel':'')); d.setAttribute('role','option'); d.dataset.id=n.id;
       var alt=n.altLabel&&n.altLabel.ko?' · '+[].concat(n.altLabel.ko).join(', '):'';
       var src=(n.source||[]).length?' · 출처 '+n.source.length:'';
-      d.innerHTML='<div class="h"><span class="ty" style="background:'+tc(n.type)+'">'+tl(n.type)+'</span><span class="nm">'+esc(lab(n))+'</span><span class="en">'+esc((n.label&&n.label.en)||'')+esc(alt)+'</span></div>'+
-        (n.definition?'<p class="df">'+esc(n.definition.ko)+'</p>':'')+
+      d.innerHTML='<div class="h"><span class="ty" style="background:'+tc(n.type)+'">'+tl(n.type)+'</span><span class="nm">'+esc(lab(n))+'</span><span class="en">'+esc((n.label&&n.label.en&&!(LG!=='ko'&&/[가-힣]/.test(n.label.en))&&n.label.en!==lab(n))?n.label.en:'')+esc(alt)+'</span></div>'+
+        (n.definition?'<p class="df">'+esc(dfn(n))+'</p>':'')+
         '<div class="more">'+(n.anchor?'<a href="'+n.anchor+'">설명 보러 가기 →</a>':'')+' <span>'+esc(src)+(n.confidence&&n.confidence!=='high'?' · 확신도 '+n.confidence:'')+'</span><div style="margin-top:6px">'+relHtml(n)+'</div></div>';
       d.onclick=function(ev){var g=ev.target.closest('.rel'); if(g){ if(g.dataset.go)pick(g.dataset.go,true); ev.stopPropagation(); return;}
         if(ev.target.tagName==='A')return; pick(n.id);};
@@ -1212,7 +1214,7 @@ function mountIndex(root){
   lad.innerHTML=html.length?html.join(''):'<span class="note">이 페이지에는 개념정리 사슬이 없다.</span>';
   lad.addEventListener('click',function(ev){var s=ev.target.closest('[data-go]'); if(s)pick(s.dataset.go,true);});
   var qs=root.querySelector('.qs'); KG.nodes.filter(function(n){return n.type==='Question';}).forEach(function(n){
-    var li=el('li',null,'<b>'+esc(lab(n))+'</b>'+(n.definition?' — '+esc(n.definition.ko):'')+(n.confidence==='low'?' <span class="badge no">확인 필요</span>':'')+(n.anchor?' <a href="'+n.anchor+'" style="color:var(--gfp,#5ee39c)">본문</a>':''));
+    var li=el('li',null,'<b>'+esc(lab(n))+'</b>'+(n.definition?' — '+esc(dfn(n)):'')+(n.confidence==='low'?' <span class="badge no">확인 필요</span>':'')+(n.anchor?' <a href="'+n.anchor+'" style="color:var(--gfp,#5ee39c)">본문</a>':''));
     qs.appendChild(li);});
   render();
 }
