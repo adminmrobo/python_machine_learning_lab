@@ -1,0 +1,498 @@
+{
+"파이썬 머신러닝 연구소": {
+"en": "Python Machine Learning Lab",
+"zh": "Python机器学习研究所",
+"ja": "",
+"ru": "",
+"uz": "",
+"vi": ""
+},
+"초파리팀": {
+"en": "Team Fruit Fly",
+"zh": "果蝇队",
+"ja": "",
+"ru": "",
+"uz": "",
+"vi": ""
+},
+"주판봇팀": {
+"en": "Team AbaBot",
+"zh": "算盘宝队",
+"ja": "",
+"ru": "",
+"uz": "",
+"vi": ""
+},
+"팀 대항전": {
+"en": "team match",
+"zh": "团队对抗赛",
+"ja": "",
+"ru": "",
+"uz": "",
+"vi": ""
+},
+"조별발표": {
+"en": "group presentation",
+"zh": "小组发表",
+"ja": "",
+"ru": "",
+"uz": "",
+"vi": ""
+},
+"개인발표": {
+"en": "solo presentation",
+"zh": "个人发表",
+"ja": "",
+"ru": "",
+"uz": "",
+"vi": ""
+},
+"상담": {
+"en": "consultation",
+"zh": "咨询",
+"ja": "",
+"ru": "",
+"uz": "",
+"vi": ""
+},
+"토론": {
+"en": "debate",
+"zh": "讨论",
+"ja": "",
+"ru": "",
+"uz": "",
+"vi": ""
+},
+"쪽지시험": {
+"en": "pop quiz",
+"zh": "小测验",
+"ja": "",
+"ru": "",
+"uz": "",
+"vi": ""
+},
+"심판": {
+"en": "referee",
+"zh": "裁判",
+"ja": "",
+"ru": "",
+"uz": "",
+"vi": ""
+},
+"조장": {
+"en": "team leader",
+"zh": "组长",
+"ja": "",
+"ru": "",
+"uz": "",
+"vi": ""
+},
+"점검실": {
+"en": "review room",
+"zh": "检查室",
+"ja": "",
+"ru": "",
+"uz": "",
+"vi": ""
+},
+"실전 연습장": {
+"en": "practice arena",
+"zh": "实战练习场",
+"ja": "",
+"ru": "",
+"uz": "",
+"vi": ""
+},
+"지하 실전 연습장": {
+"en": "basement practice arena",
+"zh": "地下实战练习场",
+"ja": "",
+"ru": "",
+"uz": "",
+"vi": ""
+},
+"건물 안내도": {
+"en": "building directory",
+"zh": "大楼导览图",
+"ja": "",
+"ru": "",
+"uz": "",
+"vi": ""
+},
+"공사 중": {
+"en": "under construction",
+"zh": "施工中",
+"ja": "",
+"ru": "",
+"uz": "",
+"vi": ""
+},
+"정밀도": {
+"en": "precision",
+"zh": "精确率",
+"ja": "",
+"ru": "",
+"uz": "",
+"vi": ""
+},
+"재현율": {
+"en": "recall",
+"zh": "召回率",
+"ja": "",
+"ru": "",
+"uz": "",
+"vi": ""
+},
+"혼동행렬": {
+"en": "confusion matrix",
+"zh": "混淆矩阵",
+"ja": "",
+"ru": "",
+"uz": "",
+"vi": ""
+},
+"교차검증": {
+"en": "cross-validation",
+"zh": "交叉验证",
+"ja": "",
+"ru": "",
+"uz": "",
+"vi": ""
+},
+"기준선": {
+"en": "baseline",
+"zh": "基准线",
+"ja": "",
+"ru": "",
+"uz": "",
+"vi": ""
+},
+"문턱값": {
+"en": "threshold",
+"zh": "阈值",
+"ja": "",
+"ru": "",
+"uz": "",
+"vi": ""
+},
+"표준화": {
+"en": "standardization",
+"zh": "标准化",
+"ja": "",
+"ru": "",
+"uz": "",
+"vi": ""
+},
+"회귀": {
+"en": "regression",
+"zh": "回归",
+"ja": "",
+"ru": "",
+"uz": "",
+"vi": ""
+},
+"분류": {
+"en": "classification",
+"zh": "分类",
+"ja": "",
+"ru": "",
+"uz": "",
+"vi": ""
+},
+"특성": {
+"en": "feature",
+"zh": "特征",
+"ja": "",
+"ru": "",
+"uz": "",
+"vi": ""
+},
+"타깃": {
+"en": "target",
+"zh": "目标变量",
+"ja": "",
+"ru": "",
+"uz": "",
+"vi": ""
+},
+"특성공학": {
+"en": "feature engineering",
+"zh": "特征工程",
+"ja": "",
+"ru": "",
+"uz": "",
+"vi": ""
+},
+"도미": {
+"en": "bream",
+"zh": "鲷鱼",
+"ja": "",
+"ru": "",
+"uz": "",
+"vi": ""
+},
+"빙어": {
+"en": "smelt",
+"zh": "胡瓜鱼",
+"ja": "",
+"ru": "",
+"uz": "",
+"vi": ""
+},
+"농어": {
+"en": "perch",
+"zh": "鲈鱼",
+"ja": "",
+"ru": "",
+"uz": "",
+"vi": ""
+},
+"로치": {
+"en": "roach",
+"zh": "拟鲤",
+"ja": "",
+"ru": "",
+"uz": "",
+"vi": ""
+},
+"지니 불순도": {
+"en": "Gini impurity",
+"zh": "基尼不纯度",
+"ja": "",
+"ru": "",
+"uz": "",
+"vi": ""
+},
+"의사결정나무": {
+"en": "decision tree",
+"zh": "决策树",
+"ja": "",
+"ru": "",
+"uz": "",
+"vi": ""
+},
+"k-최근접 이웃": {
+"en": "k-nearest neighbors",
+"zh": "K近邻",
+"ja": "",
+"ru": "",
+"uz": "",
+"vi": ""
+},
+"로지스틱 회귀": {
+"en": "logistic regression",
+"zh": "逻辑回归",
+"ja": "",
+"ru": "",
+"uz": "",
+"vi": ""
+},
+"선형 SVM": {
+"en": "linear SVM",
+"zh": "线性SVM",
+"ja": "",
+"ru": "",
+"uz": "",
+"vi": ""
+},
+"여유 폭": {
+"en": "margin",
+"zh": "间隔",
+"ja": "",
+"ru": "",
+"uz": "",
+"vi": ""
+},
+"서포트 벡터": {
+"en": "support vector",
+"zh": "支持向量",
+"ja": "",
+"ru": "",
+"uz": "",
+"vi": ""
+},
+"힌지 손실": {
+"en": "hinge loss",
+"zh": "铰链损失",
+"ja": "",
+"ru": "",
+"uz": "",
+"vi": ""
+},
+"시그모이드": {
+"en": "sigmoid",
+"zh": "sigmoid",
+"ja": "",
+"ru": "",
+"uz": "",
+"vi": ""
+},
+"다항 회귀": {
+"en": "polynomial regression",
+"zh": "多项式回归",
+"ja": "",
+"ru": "",
+"uz": "",
+"vi": ""
+},
+"랜덤포레스트": {
+"en": "random forest",
+"zh": "随机森林",
+"ja": "",
+"ru": "",
+"uz": "",
+"vi": ""
+},
+"그래디언트부스팅": {
+"en": "gradient boosting",
+"zh": "梯度提升",
+"ja": "",
+"ru": "",
+"uz": "",
+"vi": ""
+},
+"결정계수": {
+"en": "coefficient of determination",
+"zh": "决定系数",
+"ja": "",
+"ru": "",
+"uz": "",
+"vi": ""
+},
+"잔차": {
+"en": "residual",
+"zh": "残差",
+"ja": "",
+"ru": "",
+"uz": "",
+"vi": ""
+},
+"오즈비": {
+"en": "odds ratio",
+"zh": "优势比",
+"ja": "",
+"ru": "",
+"uz": "",
+"vi": ""
+},
+"과소적합": {
+"en": "underfitting",
+"zh": "欠拟合",
+"ja": "",
+"ru": "",
+"uz": "",
+"vi": ""
+},
+"층화 분할": {
+"en": "stratified split",
+"zh": "分层划分",
+"ja": "",
+"ru": "",
+"uz": "",
+"vi": ""
+},
+"샘플링 편향": {
+"en": "sampling bias",
+"zh": "抽样偏差",
+"ja": "",
+"ru": "",
+"uz": "",
+"vi": ""
+},
+"원-핫 인코딩": {
+"en": "one-hot encoding",
+"zh": "独热编码",
+"ja": "",
+"ru": "",
+"uz": "",
+"vi": ""
+},
+"규제": {
+"en": "regularization",
+"zh": "正则化",
+"ja": "",
+"ru": "",
+"uz": "",
+"vi": ""
+},
+"에포크": {
+"en": "epoch",
+"zh": "轮次（epoch）",
+"ja": "",
+"ru": "",
+"uz": "",
+"vi": ""
+},
+"이탈": {
+"en": "churn",
+"zh": "流失",
+"ja": "",
+"ru": "",
+"uz": "",
+"vi": ""
+},
+"청구": {
+"en": "claim",
+"zh": "理赔",
+"ja": "",
+"ru": "",
+"uz": "",
+"vi": ""
+},
+"생선가게": {
+"en": "fish market",
+"zh": "鱼店",
+"ja": "",
+"ru": "",
+"uz": "",
+"vi": ""
+},
+"택시회사": {
+"en": "taxi company",
+"zh": "出租车公司",
+"ja": "",
+"ru": "",
+"uz": "",
+"vi": ""
+},
+"배터리 공장": {
+"en": "battery factory",
+"zh": "电池工厂",
+"ja": "",
+"ru": "",
+"uz": "",
+"vi": ""
+},
+"보험사": {
+"en": "insurance company",
+"zh": "保险公司",
+"ja": "",
+"ru": "",
+"uz": "",
+"vi": ""
+},
+"처음 오신 분께": {
+"en": "For first-time visitors",
+"zh": "致初次来访的你",
+"ja": "",
+"ru": "",
+"uz": "",
+"vi": ""
+},
+"조수가 대신 물어봅니다": {
+"en": "the assistant asks for you",
+"zh": "助手替你提问",
+"ja": "",
+"ru": "",
+"uz": "",
+"vi": ""
+},
+"AI 판단 코너": {
+"en": "AI judgment corner",
+"zh": "AI判断角",
+"ja": "",
+"ru": "",
+"uz": "",
+"vi": ""
+}
+}
