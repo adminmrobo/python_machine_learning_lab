@@ -137,7 +137,16 @@ def jsonld(kg, meta):
     return {'@context': ctx, '@graph': g}
 
 # ── 조각 ───────────────────────────────────────
+def cover_img(key, alt, chip, rel='../'):
+    if os.path.exists(os.path.join(ROOT, 'assets', 'img', key + '.webp')):
+        return ('<!-- lab-cover --><header class="cover has-img" id="cover" role="img" aria-label="%s"><img class="cover-img" src="%sassets/img/%s.webp" width="1920" height="1080" alt="%s" decoding="async" fetchpriority="high">'
+                '<span class="cover-chip">%s</span></header><!-- /lab-cover -->') % (E(alt), rel, key, E(alt), chip)
+    return None
+
 def cover(P):
+    key = 'cover_%s' % P['num']
+    im = cover_img(key, P['cover_alt'], '%s · %s' % (SERIES, P['chip']))
+    if im: return im
     shelf = ''.join(face(w, m, 112) for w, m in P.get('cover_cast', (('fly', 'point'), ('sia', 'smile'), ('doc', 'front'), ('moa', 'cheer'), ('robo', 'coin'))))
     return ('<!-- lab-cover --><header class="cover" id="cover" data-img="cover_%s" role="img" aria-label="%s">%s<div class="shelf">%s</div>'
             '<span class="cover-chip">%s · %s</span></header><!-- /lab-cover -->') % (P['num'], E(P['cover_alt']), pixel.scene(P['num']), shelf, SERIES, P['chip'])
@@ -210,13 +219,13 @@ def collect_sprites(body):
     exmap = {k: key_of(k) for k in sorted(want)}
     return sp, exmap
 
-def head(title, desc, og_title, url, extra=''):
+def head(title, desc, og_title, url, extra='', og='cover_index'):
     return ('<!DOCTYPE html>\n<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">'
             '<title>%s</title><meta name="description" content="%s"><meta property="og:title" content="%s"><meta property="og:type" content="article"><meta property="og:url" content="%s">'
-            '<meta property="og:image" content="%sassets/img/og_cover.png">%s'
+            '<meta property="og:image" content="%sassets/img/og/%s.png"><meta property="og:image:width" content="960"><meta property="og:image:height" content="540"><meta name="twitter:card" content="summary_large_image">%s'
             '<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>'
             '<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet"><style>%s</style></head>') % (
-        E(title), E(desc), E(og_title), url, SITE, extra, CSS)
+        E(title), E(desc), E(og_title), url, SITE, og, extra, CSS)
 
 def footer(P, prev, nxt, rel='../'):
     src_rows = ''.join('<tr><td>%s</td><td>%s</td><td>%s</td></tr>' % (E(r['title']), E(r.get('by', '')), ('<a href="%s" target="_blank" rel="noopener">열기</a>' % E(r['URL'])) if r.get('URL') else '') for r in P.get('refs', []))
@@ -271,7 +280,7 @@ def page_html(P, prev, nxt, fname):
     data_js = 'var SPRITE=%s;\nvar EXMAP=%s;\nvar QUIZ=%s;\nvar GL=%s;\nvar FLOWS={%s};\nvar CARDS=%s;\n' % (esc_json(sp), esc_json(exmap), esc_json(quiz), esc_json({k: v[:3] for k, v in P.get('gloss', {}).items()}), flows, esc_json(P.get('cards', {})))
     d = P['duel']
     duel_js = 'var DUEL={el:"#duelbox",higherIsBetter:%s,drawMargin:%s,run:function(){%s},announce:function(r){%s},verdict:function(res,r){%s}};' % ('true' if d.get('higher', True) else 'false', d.get('margin', 0), d['run'], d['announce'], d['verdict'])
-    doc = head('%s — %s · %s' % (P['title'], P['subtitle'], SERIES), P['desc'], meta['title'], url, '<meta name="citation_title" content="%s"><meta name="citation_author" content="%s"><meta name="dc.language" content="ko"><meta name="dc.rights" content="%s">' % (E(meta['title']), AUTHOR, LICENSE))
+    doc = head('%s — %s · %s' % (P['title'], P['subtitle'], SERIES), P['desc'], meta['title'], url, '<meta name="citation_title" content="%s"><meta name="citation_author" content="%s"><meta name="dc.language" content="ko"><meta name="dc.rights" content="%s">' % (E(meta['title']), AUTHOR, LICENSE), og='cover_%s' % P['num'])
     doc += ('<body><div id="prog"></div><div id="tip" role="tooltip"></div>\n%s\n<script type="application/json" id="kg-raw">%s</script><script type="application/ld+json" id="kg-ld">%s</script>'
             '<script type="application/json" id="refs-csl">%s</script><script type="application/json" id="page-meta">%s</script>'
             '<script>%s%s\nvar PAGE={init:function(LAB){%s}};</script><script>%s</script><script>%s</script></body></html>') % (
@@ -286,7 +295,7 @@ def slot_html(P, prev, nxt, fname):
         int(P['num']), SERIES, cover(P), P['kicker'], P['title'], say('robo', 'smile', P['robo']), say('doc', 'front', P['doc']), P['plan'], P.get('note', ''))
     body += footer(P, prev, nxt)
     sp, exmap = collect_sprites(body)
-    return head('%s · %s' % (P['title'], SERIES), P['desc'], P['title'], url) + '<body><div id="prog"></div><div id="tip"></div>%s<script>var SPRITE=%s;var EXMAP=%s;</script><script>%s</script></body></html>' % (body, esc_json(sp), esc_json(exmap), JS)
+    return head('%s · %s' % (P['title'], SERIES), P['desc'], P['title'], url, og='cover_%s' % P['num']) + '<body><div id="prog"></div><div id="tip"></div>%s<script>var SPRITE=%s;var EXMAP=%s;</script><script>%s</script></body></html>' % (body, esc_json(sp), esc_json(exmap), JS)
 
 def index_html(pages, IDX):
     rows = []
@@ -298,6 +307,7 @@ def index_html(pages, IDX):
     body = IDX['body'].replace('{{TOWER}}', tower).replace('{{TEAMS}}', teams_html())
     cov = '<!-- lab-cover --><header class="cover" id="cover" role="img" aria-label="%s">%s<div class="shelf">%s</div><span class="cover-chip">%s · 건물 안내도</span></header><!-- /lab-cover -->' % (
         E(IDX['cover_alt']), pixel.scene('00'), ''.join(face(w, m, 112) for w, m in (('fly', 'point'), ('sia', 'smile'), ('x1', 'smile'), ('doc', 'front'), ('x3', 'smile'), ('moa', 'cheer'), ('robo', 'coin'))), SERIES)
+    cov = cover_img('cover_index', IDX['cover_alt'], SERIES + ' · 건물 안내도', '') or cov
     full = '<nav class="top"><a class="brand" href="index.html"><span class="hex">Py</span>%s</a><div class="links"><a href="#course">강좌 안내</a><a href="#floors">15층 안내도</a><a href="#teams">두 팀</a><a href="#how">공부하는 법</a><a href="#tools">실습 도구</a><a href="practice/index.html">실전 연습장</a></div></nav>%s<main id="top">%s</main>' % (SERIES, cov, body)
     full += footer({'refs': IDX['refs'], 'models': IDX['models']}, None, None, '')
     sp, exmap = collect_sprites(full)
@@ -340,7 +350,7 @@ def main():
     os.makedirs(os.path.join(ROOT, 'data'), exist_ok=True)
     json.dump(reg, open(os.path.join(ROOT, 'data', 'KG_00_registry.json'), 'w', encoding='utf-8'), ensure_ascii=False, indent=1)
     if os.path.exists(os.path.join(HERE, 'practice.py')):
-        g = {'say': say, 'face': face, 'E': E, 'head': head, 'footer': footer, 'collect_sprites': collect_sprites, 'esc_json': esc_json, 'JS': JS, 'pixel': pixel, 'SERIES': SERIES, 'SITE': SITE, 'check': check, 'ROOT': ROOT}
+        g = {'say': say, 'face': face, 'E': E, 'cover_img': cover_img, 'head': head, 'footer': footer, 'collect_sprites': collect_sprites, 'esc_json': esc_json, 'JS': JS, 'pixel': pixel, 'SERIES': SERIES, 'SITE': SITE, 'check': check, 'ROOT': ROOT}
         exec(open(os.path.join(HERE, 'practice.py'), encoding='utf-8').read(), g)
     print('\n'.join(rep))
 

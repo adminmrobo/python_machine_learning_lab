@@ -92,22 +92,23 @@ show(location.hash.slice(1)||'fish');
 '''
 
 body_tabs = ''.join(tab_html(t) for t in TABS)
+PCOVER = cover_img('cover_practice', '연구소 지하 연습장에 생선가게·택시 차고·배터리 라인·보험 창구가 네 개의 무대처럼 나란히 있고 캐릭터들이 각 무대에서 일하는 픽셀 표지', SERIES + ' · 지하 실전 연습장') or ''
 bar = '<div class="tabbar ctrl" role="tablist">%s</div>' % ''.join('<button type="button" class="bt" data-t="%s" aria-pressed="false">%s %s</button>' % (t['id'], t['icon'], t['name']) for t in TABS)
 css_extra = '<style>.ptab .kpis{margin:10px 0}.dk.good b{color:#13733a}.dk.bad b{color:#c93030}.mis li{margin:6px 0}.mis li.pass{color:#13733a}.mis li.pass .mk{color:#13733a}.ptalk .say{margin:6px 0}.tabbar{position:sticky;top:54px;z-index:20;background:#fff;padding:8px 0;border-bottom:1px solid #d5dbe2}</style>'
 body = ('<nav class="top"><a class="brand" href="../index.html"><span class="hex">B1</span>%s</a><div class="links"><a href="#fish">생선가게</a><a href="#taxi">택시회사</a><a href="#battery">배터리 공장</a><a href="#insure">보험사</a><a href="../index.html">건물 안내도</a></div></nav>'
-        '<!-- lab-cover --><header class="cover" id="cover" role="img" aria-label="연구소 건물 지하 연습장 표지">%s<div class="shelf">%s</div><span class="cover-chip">%s · 지하 실전 연습장</span></header><!-- /lab-cover -->'
+        '%s'
         '<main id="top"><header class="hero"><div class="wrap"><div class="kicker">마지막 장 · 실전 연습장</div><h1>지하 실전 연습장<br><span style="font-size:.55em;color:#5b6874">네 곳의 가상 사업장을 직접 운영해 보기</span></h1>'
         '<p>1~10층에서 배운 것을 가상 사업장에서 씁니다. 장면마다 <b>초록</b>은 바꿀 수 없는 환경 조건, <b>파랑</b>은 여러분의 결정입니다. 손잡이를 움직이면 성적표와 네 캐릭터의 말이 바뀌고, 미션은 조작한 뒤에만 판정합니다. 주소 끝에 <code>#taxi</code>처럼 장면 이름을 붙이면 그 장면이 바로 열립니다.</p>'
         '<div class="talk">%s</div></div></header><div class="wrap">%s</div>%s'
         '<section class="level"><div class="wrap"><div class="slotbox"><h2>네 장면이 함께 묻는 질문</h2><p>생선가게의 눈금, 택시회사와 보험사의 문턱값, 배터리 공장의 격차 — 네 장면 모두 “점수 하나가 좋아 보여도 업무 목적의 기준으로 다시 재면 답이 바뀐다”는 같은 질문을 던집니다. 여러분이 고른 설정을 보고서에 쓴다면, 어떤 숫자를 근거로 들겠습니까?</p>'
         '<p style="font-size:14px;color:#5b6874">모형의 한계: 택시·보험사 장면의 점수 분포와 비용은 설명용 모형이고, 배터리 점수는 교안 값, 생선은 실습 데이터입니다. 숫자는 교육용 예시이며 경영·보험·투자 권고가 아닙니다. 기록은 이 탭에만 있고 저장되지 않습니다.</p></div></div></section></main>') % (
-    SERIES, pixel.scene('pr'), ''.join(face(w, m, 112) for w, m in (('fly', 'magnify'), ('asst', 'report'), ('doc', 'think'), ('robo', 'coin'))), SERIES,
+    SERIES, PCOVER,
     say('doc', 'front', '여기는 지하 연습장입니다. 정답 버튼은 없습니다 — 미션 판정만 있습니다.') + say('moa', 'cheer', '보험사부터 해 보세요! 10층에서 본 숫자가 그대로 나와요.'), bar, body_tabs)
 P = {'refs': [dict(id='w04', title='4층 생선가게 (부교재 실습 데이터)', by='안상선'), dict(id='w07', title='7층 배터리 공장 (회귀모델 1 교안)', by='안상선'), dict(id='w10', title='10층 보험 실제 사례 (실제 케이스 교안)', by='안상선')],
      'models': ['택시·보험사 점수 분포와 비용은 설명용 모형입니다.']}
 full = body + footer(P, None, None, '../')
 sp, exmap = collect_sprites(full)
-doc = head('지하 실전 연습장 · ' + SERIES, '파이썬 머신러닝 연구소 실전 연습장 — 생선가게 KNN, 택시 이탈 쿠폰, 배터리 모델 선택, 보험 드문 청구를 직접 운영하는 대시보드.', '지하 실전 연습장', SITE + 'practice/index.html', css_extra)
+doc = head('지하 실전 연습장 · ' + SERIES, '파이썬 머신러닝 연구소 실전 연습장 — 생선가게 KNN, 택시 이탈 쿠폰, 배터리 모델 선택, 보험 드문 청구를 직접 운영하는 대시보드.', '지하 실전 연습장', SITE + 'practice/index.html', css_extra, og='cover_practice')
 doc += '<body><div id="prog"></div><div id="tip"></div>%s<script>var SPRITE=%s;var EXMAP=%s;</script><script>%s</script><script>window.addEventListener("DOMContentLoaded",function(){setTimeout(function(){%s},0);});</script></body></html>' % (full, esc_json(sp), esc_json(exmap), JS, JSP)
 os.makedirs(os.path.join(ROOT, 'practice'), exist_ok=True)
 open(os.path.join(ROOT, 'practice', 'index.html'), 'w', encoding='utf-8').write(doc)
