@@ -1,0 +1,1333 @@
+{
+ "version": "1.0",
+ "series": "파이썬 머신러닝 연구소",
+ "updated": "2026-11-26",
+ "domain": "ml",
+ "ids": {
+  "lab:topic/pyml-w01": {
+   "ko": "인공지능 모델의 개요",
+   "en": "Overview of AI models",
+   "type": "Topic",
+   "pages": [
+    "pyml_w01",
+    "pyml_w02",
+    "pyml_w08"
+   ]
+  },
+  "lab:topic/python-machine-learning": {
+   "ko": "파이썬 머신러닝",
+   "en": "python machine learning",
+   "type": "Area",
+   "pages": [
+    "pyml_w01",
+    "pyml_w02",
+    "pyml_w03",
+    "pyml_w04",
+    "pyml_w05",
+    "pyml_w06",
+    "pyml_w07",
+    "pyml_w08",
+    "pyml_w09",
+    "pyml_w10"
+   ]
+  },
+  "lab:concept/rule-vs-ml": {
+   "ko": "규칙 기반과 머신러닝",
+   "en": "rule-based programming versus machine learning",
+   "type": "Concept",
+   "pages": [
+    "pyml_w01"
+   ]
+  },
+  "lab:concept/three-learning-types": {
+   "ko": "학습의 세 종류",
+   "en": "supervised unsupervised and reinforcement learning",
+   "type": "Concept",
+   "pages": [
+    "pyml_w01"
+   ]
+  },
+  "lab:concept/three-capabilities": {
+   "ko": "머신러닝 작업의 세 단계",
+   "en": "problem definition model choice and validation",
+   "type": "Concept",
+   "pages": [
+    "pyml_w01"
+   ]
+  },
+  "lab:concept/prompt-code-verify": {
+   "ko": "프롬프트로 코드 받기와 검증",
+   "en": "prompt to code workflow with cross checking",
+   "type": "Concept",
+   "pages": [
+    "pyml_w01"
+   ]
+  },
+  "lab:term/rule-based": {
+   "ko": "규칙 기반",
+   "en": "rule based",
+   "type": "Term",
+   "pages": [
+    "pyml_w01"
+   ]
+  },
+  "lab:term/machine-learning": {
+   "ko": "머신러닝",
+   "en": "machine learning",
+   "type": "Term",
+   "pages": [
+    "pyml_w01"
+   ]
+  },
+  "lab:term/supervised-learning": {
+   "ko": "지도학습",
+   "en": "supervised learning",
+   "type": "Term",
+   "pages": [
+    "pyml_w01"
+   ]
+  },
+  "lab:term/unsupervised-learning": {
+   "ko": "비지도학습",
+   "en": "unsupervised learning",
+   "type": "Term",
+   "pages": [
+    "pyml_w01"
+   ]
+  },
+  "lab:term/reinforcement-learning": {
+   "ko": "강화학습",
+   "en": "reinforcement learning",
+   "type": "Term",
+   "pages": [
+    "pyml_w01"
+   ]
+  },
+  "lab:term/target": {
+   "ko": "타깃",
+   "en": "target",
+   "type": "Term",
+   "pages": [
+    "pyml_w01"
+   ]
+  },
+  "lab:term/prompt": {
+   "ko": "프롬프트",
+   "en": "prompt",
+   "type": "Term",
+   "pages": [
+    "pyml_w01"
+   ]
+  },
+  "lab:work/syllabus": {
+   "ko": "강의계획서 — 파이썬머신러닝 (EB24220-02, 2026-2학기)",
+   "en": "강의계획서 — 파이썬머신러닝 (EB24220-02, 2026-2학기)",
+   "type": "Work",
+   "pages": [
+    "pyml_w01",
+    "pyml_w08"
+   ]
+  },
+  "lab:work/otdeck": {
+   "ko": "파이썬머신러닝 오리엔테이션 (1주차 OT, 국문 35 + 中文 35장)",
+   "en": "파이썬머신러닝 오리엔테이션 (1주차 OT, 국문 35 + 中文 35장)",
+   "type": "Work",
+   "pages": [
+    "pyml_w01"
+   ]
+  },
+  "lab:work/w02deck": {
+   "ko": "2주차 교안 — 기계학습의 모형: 지도학습 1",
+   "en": "2주차 교안 — 기계학습의 모형: 지도학습 1",
+   "type": "Work",
+   "pages": [
+    "pyml_w01",
+    "pyml_w02"
+   ]
+  },
+  "lab:work/hongong": {
+   "ko": "혼자 공부하는 머신러닝+딥러닝 (부교재)",
+   "en": "혼자 공부하는 머신러닝+딥러닝 (부교재)",
+   "type": "Work",
+   "pages": [
+    "pyml_w01",
+    "pyml_w04"
+   ]
+  },
+  "lab:method/pyml_w01-fly": {
+   "ko": "같은 프롬프트를 세 도구에 넣고 다른 줄을 비교",
+   "en": "option A (team fruit fly)",
+   "type": "Method",
+   "pages": [
+    "pyml_w01"
+   ]
+  },
+  "lab:method/pyml_w01-robo": {
+   "ko": "가장 빠른 도구의 첫 답을 바로 실행",
+   "en": "option B (team abacus bot)",
+   "type": "Method",
+   "pages": [
+    "pyml_w01"
+   ]
+  },
+  "lab:topic/pyml-w02": {
+   "ko": "지도학습 ① 분류와 회귀",
+   "en": "Supervised learning 1: classification and regression",
+   "type": "Topic",
+   "pages": [
+    "pyml_w02",
+    "pyml_w03",
+    "pyml_w06",
+    "pyml_w08"
+   ]
+  },
+  "lab:concept/features-targets": {
+   "ko": "특성과 타깃, 회귀와 분류",
+   "en": "features targets regression and classification",
+   "type": "Concept",
+   "pages": [
+    "pyml_w02"
+   ]
+  },
+  "lab:concept/linear-regression": {
+   "ko": "선형 회귀와 RMSE",
+   "en": "linear regression and RMSE",
+   "type": "Concept",
+   "pages": [
+    "pyml_w02"
+   ]
+  },
+  "lab:concept/train-test-split": {
+   "ko": "학습용·시험용 분할",
+   "en": "train test split",
+   "type": "Concept",
+   "pages": [
+    "pyml_w02"
+   ]
+  },
+  "lab:concept/accuracy-trap": {
+   "ko": "혼동행렬과 정확도의 함정",
+   "en": "confusion matrix and the accuracy trap",
+   "type": "Concept",
+   "pages": [
+    "pyml_w02"
+   ]
+  },
+  "lab:term/feature": {
+   "ko": "특성",
+   "en": "feature",
+   "type": "Term",
+   "pages": [
+    "pyml_w02"
+   ]
+  },
+  "lab:term/regression": {
+   "ko": "회귀",
+   "en": "regression",
+   "type": "Term",
+   "pages": [
+    "pyml_w02"
+   ]
+  },
+  "lab:term/classification": {
+   "ko": "분류",
+   "en": "classification",
+   "type": "Term",
+   "pages": [
+    "pyml_w02"
+   ]
+  },
+  "lab:term/rmse": {
+   "ko": "RMSE",
+   "en": "rmse",
+   "type": "Term",
+   "pages": [
+    "pyml_w02"
+   ]
+  },
+  "lab:term/least-squares": {
+   "ko": "최소제곱",
+   "en": "least squares",
+   "type": "Term",
+   "pages": [
+    "pyml_w02"
+   ]
+  },
+  "lab:term/confusion-matrix": {
+   "ko": "혼동행렬",
+   "en": "confusion matrix",
+   "type": "Term",
+   "pages": [
+    "pyml_w02"
+   ]
+  },
+  "lab:term/baseline": {
+   "ko": "기준선",
+   "en": "baseline",
+   "type": "Term",
+   "pages": [
+    "pyml_w02"
+   ]
+  },
+  "lab:work/rides": {
+   "ko": "rides.csv — 도시 이동 서비스 1,200건 (수업용 합성 데이터)",
+   "en": "rides.csv — 도시 이동 서비스 1,200건 (수업용 합성 데이터)",
+   "type": "Work",
+   "pages": [
+    "pyml_w02",
+    "pyml_w03",
+    "pyml_w06"
+   ]
+  },
+  "lab:work/sklearn": {
+   "ko": "scikit-learn: LinearRegression, LogisticRegression, train_test_split",
+   "en": "scikit-learn: LinearRegression, LogisticRegression, train_test_split",
+   "type": "Work",
+   "pages": [
+    "pyml_w02",
+    "pyml_w05",
+    "pyml_w07"
+   ]
+  },
+  "lab:method/pyml_w02-fly": {
+   "ko": "균형 옵션 모델 (정확도 0.604)",
+   "en": "option A (team fruit fly)",
+   "type": "Method",
+   "pages": [
+    "pyml_w02"
+   ]
+  },
+  "lab:method/pyml_w02-robo": {
+   "ko": "기본 모델 (정확도 0.796)",
+   "en": "option B (team abacus bot)",
+   "type": "Method",
+   "pages": [
+    "pyml_w02"
+   ]
+  },
+  "lab:topic/pyml-w03": {
+   "ko": "지도학습 ② 점수로 두 모델 비교하기",
+   "en": "Supervised learning 2: comparing two models with scores",
+   "type": "Topic",
+   "pages": [
+    "pyml_w03",
+    "pyml_w04",
+    "pyml_w07",
+    "pyml_w08",
+    "pyml_w09",
+    "pyml_w10"
+   ]
+  },
+  "lab:concept/cross-validation": {
+   "ko": "교차검증",
+   "en": "k-fold cross validation",
+   "type": "Concept",
+   "pages": [
+    "pyml_w03"
+   ]
+  },
+  "lab:concept/precision-recall": {
+   "ko": "정밀도와 재현율",
+   "en": "precision recall and F1",
+   "type": "Concept",
+   "pages": [
+    "pyml_w03"
+   ]
+  },
+  "lab:concept/regression-metrics": {
+   "ko": "회귀 평가 지표",
+   "en": "regression metrics MAE RMSE and R2",
+   "type": "Concept",
+   "pages": [
+    "pyml_w03"
+   ]
+  },
+  "lab:concept/knn-svm-practice": {
+   "ko": "k-NN·SVM 실습과 딥러닝 체험",
+   "en": "kNN and SVM practice and Teachable Machine",
+   "type": "Concept",
+   "pages": [
+    "pyml_w03"
+   ]
+  },
+  "lab:term/cross-validation": {
+   "ko": "교차검증",
+   "en": "cross validation",
+   "type": "Term",
+   "pages": [
+    "pyml_w03"
+   ]
+  },
+  "lab:term/overfitting": {
+   "ko": "과적합",
+   "en": "overfitting",
+   "type": "Term",
+   "pages": [
+    "pyml_w03"
+   ]
+  },
+  "lab:term/precision": {
+   "ko": "정밀도",
+   "en": "precision",
+   "type": "Term",
+   "pages": [
+    "pyml_w03"
+   ]
+  },
+  "lab:term/recall": {
+   "ko": "재현율",
+   "en": "recall",
+   "type": "Term",
+   "pages": [
+    "pyml_w03"
+   ]
+  },
+  "lab:term/threshold": {
+   "ko": "문턱값",
+   "en": "threshold",
+   "type": "Term",
+   "pages": [
+    "pyml_w03"
+   ]
+  },
+  "lab:term/mae": {
+   "ko": "MAE",
+   "en": "mae",
+   "type": "Term",
+   "pages": [
+    "pyml_w03"
+   ]
+  },
+  "lab:term/one-hot-encoding": {
+   "ko": "원-핫",
+   "en": "one hot encoding",
+   "type": "Term",
+   "pages": [
+    "pyml_w03"
+   ]
+  },
+  "lab:term/standardization": {
+   "ko": "표준화",
+   "en": "standardization",
+   "type": "Term",
+   "pages": [
+    "pyml_w03"
+   ]
+  },
+  "lab:work/w03deck": {
+   "ko": "3주차 교안 — 用评分比较两个模型 (中文简化版, 50쪽)",
+   "en": "3주차 교안 — 用评分比较两个模型 (中文简化版, 50쪽)",
+   "type": "Work",
+   "pages": [
+    "pyml_w03"
+   ]
+  },
+  "lab:work/nb0917": {
+   "ko": "실습 노트북 ml_model_2026_09_17 (k-NN · SVM, Qwen 프롬프트)",
+   "en": "실습 노트북 ml_model_2026_09_17 (k-NN · SVM, Qwen 프롬프트)",
+   "type": "Work",
+   "pages": [
+    "pyml_w03"
+   ]
+  },
+  "lab:work/payments": {
+   "ko": "payments.csv — 결제 800건 (수업용 합성 데이터)",
+   "en": "payments.csv — 결제 800건 (수업용 합성 데이터)",
+   "type": "Work",
+   "pages": [
+    "pyml_w03"
+   ]
+  },
+  "lab:work/tm": {
+   "ko": "Teachable Machine",
+   "en": "Teachable Machine",
+   "type": "Work",
+   "pages": [
+    "pyml_w03"
+   ]
+  },
+  "lab:method/pyml_w03-fly": {
+   "ko": "얕은 나무 (질문 3번)",
+   "en": "option A (team fruit fly)",
+   "type": "Method",
+   "pages": [
+    "pyml_w03"
+   ]
+  },
+  "lab:method/pyml_w03-robo": {
+   "ko": "깊은 나무 (질문 제한 없음)",
+   "en": "option B (team abacus bot)",
+   "type": "Method",
+   "pages": [
+    "pyml_w03"
+   ]
+  },
+  "lab:topic/pyml-w04": {
+   "ko": "지도학습 ③ 생선가게의 k-최근접 이웃",
+   "en": "Supervised learning 3: k-nearest neighbors at the fish market",
+   "type": "Topic",
+   "pages": [
+    "pyml_w04",
+    "pyml_w05",
+    "pyml_w08"
+   ]
+  },
+  "lab:concept/list-scatter": {
+   "ko": "리스트와 산점도",
+   "en": "python lists and scatter plots",
+   "type": "Concept",
+   "pages": [
+    "pyml_w04"
+   ]
+  },
+  "lab:concept/knn": {
+   "ko": "k-최근접 이웃",
+   "en": "k nearest neighbors",
+   "type": "Concept",
+   "pages": [
+    "pyml_w04"
+   ]
+  },
+  "lab:concept/sampling-bias": {
+   "ko": "표본 쏠림과 층화 분할",
+   "en": "sampling bias and stratified split",
+   "type": "Concept",
+   "pages": [
+    "pyml_w04"
+   ]
+  },
+  "lab:concept/feature-scaling": {
+   "ko": "표준화와 거리",
+   "en": "feature scaling for distance based models",
+   "type": "Concept",
+   "pages": [
+    "pyml_w04"
+   ]
+  },
+  "lab:term/python-list": {
+   "ko": "리스트",
+   "en": "python list",
+   "type": "Term",
+   "pages": [
+    "pyml_w04"
+   ]
+  },
+  "lab:term/scatter-plot": {
+   "ko": "산점도",
+   "en": "scatter plot",
+   "type": "Term",
+   "pages": [
+    "pyml_w04"
+   ]
+  },
+  "lab:term/majority-vote": {
+   "ko": "다수결",
+   "en": "majority vote",
+   "type": "Term",
+   "pages": [
+    "pyml_w04"
+   ]
+  },
+  "lab:term/sampling-bias": {
+   "ko": "샘플링 편향",
+   "en": "sampling bias",
+   "type": "Term",
+   "pages": [
+    "pyml_w04"
+   ]
+  },
+  "lab:term/stratified-split": {
+   "ko": "층화",
+   "en": "stratified split",
+   "type": "Term",
+   "pages": [
+    "pyml_w04"
+   ]
+  },
+  "lab:term/z-score": {
+   "ko": "표준점수",
+   "en": "z score",
+   "type": "Term",
+   "pages": [
+    "pyml_w04"
+   ]
+  },
+  "lab:term/kd-tree": {
+   "ko": "KD-트리",
+   "en": "kd tree",
+   "type": "Term",
+   "pages": [
+    "pyml_w04"
+   ]
+  },
+  "lab:work/nb01": {
+   "ko": "분류모델 FISH_MARKET_KNN_모델01 (노트북)",
+   "en": "분류모델 FISH_MARKET_KNN_모델01 (노트북)",
+   "type": "Work",
+   "pages": [
+    "pyml_w04"
+   ]
+  },
+  "lab:work/nb02": {
+   "ko": "분류모델 FISH_MARKET_KNN_모델02 — 훈련 세트와 테스트 세트, 데이터 전처리 (노트북)",
+   "en": "분류모델 FISH_MARKET_KNN_모델02 — 훈련 세트와 테스트 세트, 데이터 전처리 (노트북)",
+   "type": "Work",
+   "pages": [
+    "pyml_w04"
+   ]
+  },
+  "lab:method/pyml_w04-fly": {
+   "ko": "표준화한 KNN",
+   "en": "option A (team fruit fly)",
+   "type": "Method",
+   "pages": [
+    "pyml_w04"
+   ]
+  },
+  "lab:method/pyml_w04-robo": {
+   "ko": "원래 단위 KNN",
+   "en": "option B (team abacus bot)",
+   "type": "Method",
+   "pages": [
+    "pyml_w04"
+   ]
+  },
+  "lab:topic/pyml-w05": {
+   "ko": "특성공학과 교차검증 — 분류 모델은 모두 하나의 함수",
+   "en": "Feature engineering and validation: every classifier is one function",
+   "type": "Topic",
+   "pages": [
+    "pyml_w05",
+    "pyml_w06",
+    "pyml_w08"
+   ]
+  },
+  "lab:concept/classifier-function": {
+   "ko": "분류 함수와 세 가지 차이",
+   "en": "classifier as a function and three differences",
+   "type": "Concept",
+   "pages": [
+    "pyml_w05"
+   ]
+  },
+  "lab:concept/split-promises": {
+   "ko": "데이터 분할의 세 약속",
+   "en": "three rules of data splitting",
+   "type": "Concept",
+   "pages": [
+    "pyml_w05"
+   ]
+  },
+  "lab:concept/decision-tree": {
+   "ko": "의사결정나무와 지니 불순도",
+   "en": "decision tree and Gini impurity",
+   "type": "Concept",
+   "pages": [
+    "pyml_w05"
+   ]
+  },
+  "lab:concept/model-comparison": {
+   "ko": "모델 비교와 특성공학",
+   "en": "model comparison and feature engineering",
+   "type": "Concept",
+   "pages": [
+    "pyml_w05"
+   ]
+  },
+  "lab:term/decision-boundary": {
+   "ko": "결정 경계",
+   "en": "decision boundary",
+   "type": "Term",
+   "pages": [
+    "pyml_w05"
+   ]
+  },
+  "lab:term/feature-engineering": {
+   "ko": "특성공학",
+   "en": "feature engineering",
+   "type": "Term",
+   "pages": [
+    "pyml_w05"
+   ]
+  },
+  "lab:term/group-split": {
+   "ko": "그룹 분할",
+   "en": "group split",
+   "type": "Term",
+   "pages": [
+    "pyml_w05"
+   ]
+  },
+  "lab:term/duplicate-leakage": {
+   "ko": "쌍둥이 누출",
+   "en": "duplicate leakage",
+   "type": "Term",
+   "pages": [
+    "pyml_w05"
+   ]
+  },
+  "lab:term/gini-impurity": {
+   "ko": "지니",
+   "en": "gini impurity",
+   "type": "Term",
+   "pages": [
+    "pyml_w05"
+   ]
+  },
+  "lab:term/hyperparameter": {
+   "ko": "하이퍼파라미터",
+   "en": "hyperparameter",
+   "type": "Term",
+   "pages": [
+    "pyml_w05"
+   ]
+  },
+  "lab:work/cls1": {
+   "ko": "분류 모델은 모두 하나의 함수다 — 01부 · 분류 모델의 이해 (KO 48쪽 · ZH 48쪽)",
+   "en": "분류 모델은 모두 하나의 함수다 — 01부 · 분류 모델의 이해 (KO 48쪽 · ZH 48쪽)",
+   "type": "Work",
+   "pages": [
+    "pyml_w05"
+   ]
+  },
+  "lab:work/fishkaggle": {
+   "ko": "Fish Market dataset (Längelmävesi, 7종 159마리)",
+   "en": "Fish Market dataset (Längelmävesi, 7종 159마리)",
+   "type": "Work",
+   "pages": [
+    "pyml_w05"
+   ]
+  },
+  "lab:method/pyml_w05-fly": {
+   "ko": "KNN k=15 (이웃 15마리의 다수결)",
+   "en": "option A (team fruit fly)",
+   "type": "Method",
+   "pages": [
+    "pyml_w05"
+   ]
+  },
+  "lab:method/pyml_w05-robo": {
+   "ko": "의사결정나무 깊이 5",
+   "en": "option B (team abacus bot)",
+   "type": "Method",
+   "pages": [
+    "pyml_w05"
+   ]
+  },
+  "lab:topic/pyml-w06": {
+   "ko": "로지스틱 회귀 — 직선 하나, 세 모델",
+   "en": "Logistic regression: one line, three models",
+   "type": "Topic",
+   "pages": [
+    "pyml_w06",
+    "pyml_w07",
+    "pyml_w08"
+   ]
+  },
+  "lab:concept/linear-score": {
+   "ko": "선형 점수식",
+   "en": "linear score function",
+   "type": "Concept",
+   "pages": [
+    "pyml_w06"
+   ]
+  },
+  "lab:concept/perceptron": {
+   "ko": "퍼셉트론",
+   "en": "perceptron",
+   "type": "Concept",
+   "pages": [
+    "pyml_w06"
+   ]
+  },
+  "lab:concept/logistic-regression": {
+   "ko": "로지스틱 회귀",
+   "en": "logistic regression and the sigmoid",
+   "type": "Concept",
+   "pages": [
+    "pyml_w06"
+   ]
+  },
+  "lab:concept/linear-svm": {
+   "ko": "선형 SVM과 마진",
+   "en": "linear support vector machine and margin",
+   "type": "Concept",
+   "pages": [
+    "pyml_w06"
+   ]
+  },
+  "lab:term/weight": {
+   "ko": "가중치",
+   "en": "weight",
+   "type": "Term",
+   "pages": [
+    "pyml_w06"
+   ]
+  },
+  "lab:term/bias-term": {
+   "ko": "편향",
+   "en": "bias term",
+   "type": "Term",
+   "pages": [
+    "pyml_w06"
+   ]
+  },
+  "lab:term/perceptron": {
+   "ko": "퍼셉트론",
+   "en": "perceptron",
+   "type": "Term",
+   "pages": [
+    "pyml_w06"
+   ]
+  },
+  "lab:term/sigmoid": {
+   "ko": "시그모이드",
+   "en": "sigmoid",
+   "type": "Term",
+   "pages": [
+    "pyml_w06"
+   ]
+  },
+  "lab:term/cross-entropy": {
+   "ko": "교차 엔트로피",
+   "en": "cross entropy",
+   "type": "Term",
+   "pages": [
+    "pyml_w06"
+   ]
+  },
+  "lab:term/margin": {
+   "ko": "마진",
+   "en": "margin",
+   "type": "Term",
+   "pages": [
+    "pyml_w06"
+   ]
+  },
+  "lab:term/support-vector": {
+   "ko": "서포트 벡터",
+   "en": "support vector",
+   "type": "Term",
+   "pages": [
+    "pyml_w06"
+   ]
+  },
+  "lab:term/hinge-loss": {
+   "ko": "힌지 손실",
+   "en": "hinge loss",
+   "type": "Term",
+   "pages": [
+    "pyml_w06"
+   ]
+  },
+  "lab:work/cls2": {
+   "ko": "一个打分式分出三个模型 — 第二部 · 线性模型 (感知机 · 逻辑回归 · 线性 SVM, 47쪽)",
+   "en": "一个打分式分出三个模型 — 第二部 · 线性模型 (感知机 · 逻辑回归 · 线性 SVM, 47쪽)",
+   "type": "Work",
+   "pages": [
+    "pyml_w06"
+   ]
+  },
+  "lab:work/easyzh": {
+   "ko": "这条鱼是什么品种？—— 分类模型都是一个函数（简明版 HTML）",
+   "en": "这条鱼是什么品种？—— 分类模型都是一个函数（简明版 HTML）",
+   "type": "Work",
+   "pages": [
+    "pyml_w06"
+   ]
+  },
+  "lab:method/pyml_w06-fly": {
+   "ko": "선형 SVM — 여유 폭 최대",
+   "en": "option A (team fruit fly)",
+   "type": "Method",
+   "pages": [
+    "pyml_w06"
+   ]
+  },
+  "lab:method/pyml_w06-robo": {
+   "ko": "퍼셉트론 — 틀린 점 0개에서 멈춤",
+   "en": "option B (team abacus bot)",
+   "type": "Method",
+   "pages": [
+    "pyml_w06"
+   ]
+  },
+  "lab:topic/pyml-w07": {
+   "ko": "모델 성능 개선 — 규제 · 앙상블 · 하이퍼파라미터",
+   "en": "Improving model performance: regularization, ensembles and hyperparameters",
+   "type": "Topic",
+   "pages": [
+    "pyml_w07",
+    "pyml_w08",
+    "pyml_w09",
+    "pyml_w10"
+   ]
+  },
+  "lab:concept/odds-ratio": {
+   "ko": "로지스틱 회귀의 오즈비 해석",
+   "en": "logistic regression odds ratio interpretation",
+   "type": "Concept",
+   "pages": [
+    "pyml_w07"
+   ]
+  },
+  "lab:concept/multiple-regression": {
+   "ko": "다중 선형 회귀와 잔차",
+   "en": "multiple linear regression and residuals",
+   "type": "Concept",
+   "pages": [
+    "pyml_w07"
+   ]
+  },
+  "lab:concept/regularization": {
+   "ko": "다항 회귀와 규제",
+   "en": "polynomial regression and regularization",
+   "type": "Concept",
+   "pages": [
+    "pyml_w07"
+   ]
+  },
+  "lab:concept/ensemble": {
+   "ko": "앙상블과 과적합 격차",
+   "en": "ensembles and the train test gap",
+   "type": "Concept",
+   "pages": [
+    "pyml_w07"
+   ]
+  },
+  "lab:term/odds-ratio": {
+   "ko": "오즈비",
+   "en": "odds ratio",
+   "type": "Term",
+   "pages": [
+    "pyml_w07"
+   ]
+  },
+  "lab:term/auc": {
+   "ko": "AUC",
+   "en": "auc",
+   "type": "Term",
+   "pages": [
+    "pyml_w07"
+   ]
+  },
+  "lab:term/correlation-coefficient": {
+   "ko": "상관계수",
+   "en": "correlation coefficient",
+   "type": "Term",
+   "pages": [
+    "pyml_w07"
+   ]
+  },
+  "lab:term/residual": {
+   "ko": "잔차",
+   "en": "residual",
+   "type": "Term",
+   "pages": [
+    "pyml_w07"
+   ]
+  },
+  "lab:term/polynomial-regression": {
+   "ko": "다항 회귀",
+   "en": "polynomial regression",
+   "type": "Term",
+   "pages": [
+    "pyml_w07"
+   ]
+  },
+  "lab:term/regularization": {
+   "ko": "규제",
+   "en": "regularization",
+   "type": "Term",
+   "pages": [
+    "pyml_w07"
+   ]
+  },
+  "lab:term/ensemble": {
+   "ko": "앙상블",
+   "en": "ensemble",
+   "type": "Term",
+   "pages": [
+    "pyml_w07"
+   ]
+  },
+  "lab:term/epoch": {
+   "ko": "에포크",
+   "en": "epoch",
+   "type": "Term",
+   "pages": [
+    "pyml_w07"
+   ]
+  },
+  "lab:work/reg1": {
+   "ko": "회귀모델 (1) — 로지스틱 회귀와 배터리 수명 예측 (50쪽)",
+   "en": "회귀모델 (1) — 로지스틱 회귀와 배터리 수명 예측 (50쪽)",
+   "type": "Work",
+   "pages": [
+    "pyml_w07"
+   ]
+  },
+  "lab:work/infog": {
+   "ko": "회귀 인포그래픽 묶음 (선형·다항·Ridge·Lasso·Elastic Net·로그 모형 등, 수업 참고 자료)",
+   "en": "회귀 인포그래픽 묶음 (선형·다항·Ridge·Lasso·Elastic Net·로그 모형 등, 수업 참고 자료)",
+   "type": "Work",
+   "pages": [
+    "pyml_w07",
+    "pyml_w09"
+   ]
+  },
+  "lab:method/pyml_w07-fly": {
+   "ko": "다항 회귀(2차) + Ridge",
+   "en": "option A (team fruit fly)",
+   "type": "Method",
+   "pages": [
+    "pyml_w07"
+   ]
+  },
+  "lab:method/pyml_w07-robo": {
+   "ko": "랜덤포레스트 300그루",
+   "en": "option B (team abacus bot)",
+   "type": "Method",
+   "pages": [
+    "pyml_w07"
+   ]
+  },
+  "lab:topic/pyml-w08": {
+   "ko": "중간 점검실 — 1~7층 다시 보기",
+   "en": "Midterm review: floors 1 to 7",
+   "type": "Topic",
+   "pages": [
+    "pyml_w08"
+   ]
+  },
+  "lab:concept/midterm-map": {
+   "ko": "중간 범위 개념 지도",
+   "en": "midterm concept map",
+   "type": "Concept",
+   "pages": [
+    "pyml_w08"
+   ]
+  },
+  "lab:concept/midterm-guide": {
+   "ko": "중간 과제 작성 길잡이",
+   "en": "midterm assignment guide",
+   "type": "Concept",
+   "pages": [
+    "pyml_w08"
+   ]
+  },
+  "lab:concept/hand-calc": {
+   "ko": "손계산 연습",
+   "en": "hand calculation practice",
+   "type": "Concept",
+   "pages": [
+    "pyml_w08"
+   ]
+  },
+  "lab:term/underfitting": {
+   "ko": "과소적합",
+   "en": "underfitting",
+   "type": "Term",
+   "pages": [
+    "pyml_w08"
+   ]
+  },
+  "lab:term/false-negative": {
+   "ko": "거짓 음성",
+   "en": "false negative",
+   "type": "Term",
+   "pages": [
+    "pyml_w08"
+   ]
+  },
+  "lab:term/false-positive": {
+   "ko": "거짓 양성",
+   "en": "false positive",
+   "type": "Term",
+   "pages": [
+    "pyml_w08"
+   ]
+  },
+  "lab:work/hw1": {
+   "ko": "机器学习 Python 课程作业 — 중간 과제 (서술형 5문항, 中·英·韓)",
+   "en": "机器学习 Python 课程作业 — 중간 과제 (서술형 5문항, 中·英·韓)",
+   "type": "Work",
+   "pages": [
+    "pyml_w08"
+   ]
+  },
+  "lab:method/pyml_w08-fly": {
+   "ko": "모델 A — 놓침 10건 · 헛경보 120건 (정확도 87.0%)",
+   "en": "option A (team fruit fly)",
+   "type": "Method",
+   "pages": [
+    "pyml_w08"
+   ]
+  },
+  "lab:method/pyml_w08-robo": {
+   "ko": "모델 B — 놓침 30건 · 헛경보 20건 (정확도 95.0%)",
+   "en": "option B (team abacus bot)",
+   "type": "Method",
+   "pages": [
+    "pyml_w08"
+   ]
+  },
+  "lab:topic/pyml-w09": {
+   "ko": "회귀 모델 읽기 — 오차 · 결정계수 · SHAP",
+   "en": "Reading regression models: errors, R squared and SHAP",
+   "type": "Topic",
+   "pages": [
+    "pyml_w09",
+    "pyml_w10"
+   ]
+  },
+  "lab:concept/error-metrics": {
+   "ko": "회귀 오차 지표",
+   "en": "MSE MAE RMSE from residuals",
+   "type": "Concept",
+   "pages": [
+    "pyml_w09"
+   ]
+  },
+  "lab:concept/r-squared": {
+   "ko": "결정계수와 조정 결정계수",
+   "en": "coefficient of determination and adjusted R2",
+   "type": "Concept",
+   "pages": [
+    "pyml_w09"
+   ]
+  },
+  "lab:concept/coefficient-interpretation": {
+   "ko": "회귀 계수 해석",
+   "en": "interpreting regression coefficients",
+   "type": "Concept",
+   "pages": [
+    "pyml_w09"
+   ]
+  },
+  "lab:concept/shap": {
+   "ko": "SHAP 기여도",
+   "en": "SHAP values for individual predictions",
+   "type": "Concept",
+   "pages": [
+    "pyml_w09"
+   ]
+  },
+  "lab:term/mse": {
+   "ko": "MSE",
+   "en": "mse",
+   "type": "Term",
+   "pages": [
+    "pyml_w09"
+   ]
+  },
+  "lab:term/sst": {
+   "ko": "SST",
+   "en": "sst",
+   "type": "Term",
+   "pages": [
+    "pyml_w09"
+   ]
+  },
+  "lab:term/sse": {
+   "ko": "SSE",
+   "en": "sse",
+   "type": "Term",
+   "pages": [
+    "pyml_w09"
+   ]
+  },
+  "lab:term/adjusted-r2": {
+   "ko": "조정 R²",
+   "en": "adjusted r2",
+   "type": "Term",
+   "pages": [
+    "pyml_w09"
+   ]
+  },
+  "lab:term/p-value": {
+   "ko": "p값",
+   "en": "p value",
+   "type": "Term",
+   "pages": [
+    "pyml_w09"
+   ]
+  },
+  "lab:term/elasticity": {
+   "ko": "탄력성",
+   "en": "elasticity",
+   "type": "Term",
+   "pages": [
+    "pyml_w09"
+   ]
+  },
+  "lab:term/shap": {
+   "ko": "SHAP",
+   "en": "shap",
+   "type": "Term",
+   "pages": [
+    "pyml_w09"
+   ]
+  },
+  "lab:term/permutation-importance": {
+   "ko": "순열 중요도",
+   "en": "permutation importance",
+   "type": "Term",
+   "pages": [
+    "pyml_w09"
+   ]
+  },
+  "lab:work/reg2": {
+   "ko": "회귀모델 (2) — 정확도 · 결정계수 · SHAP으로 읽는 회귀모델 (34쪽)",
+   "en": "회귀모델 (2) — 정확도 · 결정계수 · SHAP으로 읽는 회귀모델 (34쪽)",
+   "type": "Work",
+   "pages": [
+    "pyml_w09"
+   ]
+  },
+  "lab:work/shap": {
+   "ko": "SHAP documentation",
+   "en": "SHAP documentation",
+   "type": "Work",
+   "pages": [
+    "pyml_w09"
+   ]
+  },
+  "lab:method/pyml_w09-fly": {
+   "ko": "선형 회귀 OLS — 계수·p값으로 바로 설명",
+   "en": "option A (team fruit fly)",
+   "type": "Method",
+   "pages": [
+    "pyml_w09"
+   ]
+  },
+  "lab:method/pyml_w09-robo": {
+   "ko": "그래디언트부스팅 + SHAP",
+   "en": "option B (team abacus bot)",
+   "type": "Method",
+   "pages": [
+    "pyml_w09"
+   ]
+  },
+  "lab:topic/pyml-w10": {
+   "ko": "실제 사례 — 드문 청구 잡기와 의료비 예측",
+   "en": "Real cases: catching rare claims and predicting medical costs",
+   "type": "Topic",
+   "pages": [
+    "pyml_w10"
+   ]
+  },
+  "lab:concept/extreme-imbalance": {
+   "ko": "극단적 불균형과 기준선",
+   "en": "extreme class imbalance and baseline",
+   "type": "Concept",
+   "pages": [
+    "pyml_w10"
+   ]
+  },
+  "lab:concept/rare-event-models": {
+   "ko": "드문 사건 모델 비교와 문턱값",
+   "en": "rare event model comparison and thresholds",
+   "type": "Concept",
+   "pages": [
+    "pyml_w10"
+   ]
+  },
+  "lab:concept/heavy-tail-regression": {
+   "ko": "꼬리가 긴 타깃의 회귀",
+   "en": "regression on a heavy tailed target",
+   "type": "Concept",
+   "pages": [
+    "pyml_w10"
+   ]
+  },
+  "lab:concept/group-error": {
+   "ko": "그룹별 오차와 공정성",
+   "en": "per group error and fairness",
+   "type": "Concept",
+   "pages": [
+    "pyml_w10"
+   ]
+  },
+  "lab:term/extreme-imbalance": {
+   "ko": "극단적 불균형",
+   "en": "extreme imbalance",
+   "type": "Term",
+   "pages": [
+    "pyml_w10"
+   ]
+  },
+  "lab:term/clipping": {
+   "ko": "클립",
+   "en": "clipping",
+   "type": "Term",
+   "pages": [
+    "pyml_w10"
+   ]
+  },
+  "lab:term/class-weight-balanced": {
+   "ko": "균형 가중치",
+   "en": "class weight balanced",
+   "type": "Term",
+   "pages": [
+    "pyml_w10"
+   ]
+  },
+  "lab:term/heavy-tail": {
+   "ko": "꼬리",
+   "en": "heavy tail",
+   "type": "Term",
+   "pages": [
+    "pyml_w10"
+   ]
+  },
+  "lab:term/fairness": {
+   "ko": "공정성",
+   "en": "fairness",
+   "type": "Term",
+   "pages": [
+    "pyml_w10"
+   ]
+  },
+  "lab:work/cases": {
+   "ko": "회귀모델(분류모델) 실제 케이스 — 네 가지 인슈어테크 사례 (52쪽)",
+   "en": "회귀모델(분류모델) 실제 케이스 — 네 가지 인슈어테크 사례 (52쪽)",
+   "type": "Work",
+   "pages": [
+    "pyml_w10"
+   ]
+  },
+  "lab:work/travel": {
+   "ko": "Travel Insurance 공개 학습용 데이터 (63,326건)",
+   "en": "Travel Insurance 공개 학습용 데이터 (63,326건)",
+   "type": "Work",
+   "pages": [
+    "pyml_w10"
+   ]
+  },
+  "lab:work/medical": {
+   "ko": "Medical Cost Personal Datasets (insurance.csv, 1,338행)",
+   "en": "Medical Cost Personal Datasets (insurance.csv, 1,338행)",
+   "type": "Work",
+   "pages": [
+    "pyml_w10"
+   ]
+  },
+  "lab:method/pyml_w10-fly": {
+   "ko": "로지스틱 (균형 가중치) — 정확도 0.797",
+   "en": "option A (team fruit fly)",
+   "type": "Method",
+   "pages": [
+    "pyml_w10"
+   ]
+  },
+  "lab:method/pyml_w10-robo": {
+   "ko": "그래디언트부스팅 — 정확도 0.985",
+   "en": "option B (team abacus bot)",
+   "type": "Method",
+   "pages": [
+    "pyml_w10"
+   ]
+  }
+ }
+}

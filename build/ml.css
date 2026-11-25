@@ -1,0 +1,80 @@
+/* ── 파이썬 머신러닝 연구소 추가 스타일 ── */
+:root{--team-f:#c93030;--team-r:#0b7a86;--floor:#1f3b57}
+section.level{padding-top:88px}
+@media(max-width:700px){section.level{padding-top:64px}}
+.hex{background:#1f6f9a}
+.sl{display:inline-flex;align-items:center;gap:8px;margin:4px 14px 4px 0;font-size:14px;color:var(--muted);flex-wrap:wrap}
+.sl input[type=range]{width:min(220px,60vw)}
+.sl b{color:var(--text);min-width:64px}
+.cv{width:100%;display:block;background:#fff;border:1px solid var(--rule);border-radius:10px;margin:8px 0}
+.mlw .insight,.insight{background:var(--info-soft);border:1px solid #c9d8f3;border-radius:10px;padding:10px 14px;margin:8px 0;font-size:15px;line-height:1.7}
+.strip{display:flex;flex-wrap:wrap;gap:3px;background:#fff;border:1px solid var(--rule);border-radius:10px;padding:10px}
+.strip i{width:16px;height:16px;border-radius:3px;display:inline-block;border:2px solid transparent}
+.strip i.b{background:#1e55c8}.strip i.s{background:#c93030}
+.strip i.t{border-color:#a35c00;outline:2px solid #fdf3e1}
+.cmwrap{display:flex;gap:16px;flex-wrap:wrap;align-items:flex-start}
+.cmgrid{display:grid;grid-template-columns:auto 1fr 1fr;gap:4px;min-width:280px;flex:1}
+.cmgrid>div{border-radius:8px;padding:6px 8px;font-size:13px;text-align:center}
+.cmgrid .h{background:var(--panel2);font-weight:700}
+.cmgrid b{display:block;font-size:22px}
+.cmgrid span{color:var(--muted)}
+.cmgrid .tn,.cmgrid .tp{background:var(--gfp-soft)}.cmgrid .fp{background:var(--amber-soft)}.cmgrid .fn{background:var(--eye-soft)}
+.mets{display:flex;flex-direction:column;gap:4px;font-size:15px;flex:1;min-width:220px}
+.mets .base{color:var(--muted);font-size:13px}.mets .cost{color:var(--amber)}
+.gbar{display:flex;height:22px;border-radius:6px;overflow:hidden;border:1px solid var(--rule);padding:0;background:#fff}
+.gbar i{display:block;height:100%}
+/* 처음 오신 분께 */
+.first3{border:2px solid #1f6f9a;border-radius:14px;padding:18px 20px;margin:18px 0;background:#f3f8fc}
+.first3 h3{margin:0 0 8px;font-size:18px}
+.first3 ol{margin:0;padding-left:1.3em}.first3 li{margin:4px 0}
+.first3 .nocode{display:inline-block;margin-top:8px;background:#fff;border:1px dashed #1f6f9a;border-radius:8px;padding:2px 10px;font-size:14px;color:#1f6f9a}
+.first3 details{margin-top:8px;font-size:14px}
+/* 왜 이 모델 · 조수 수식 상자 */
+.whymath{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:16px 0}
+@media(max-width:860px){.whymath{grid-template-columns:1fr}}
+.whybox,.mathbox{border-radius:14px;padding:18px 20px;line-height:1.8}
+.whybox{background:#f6f1fc;border:1px solid #dcc9f2}
+.mathbox{background:#fff7f0;border:1px solid #f1d4b8}
+.whybox h4,.mathbox h4{margin:0 0 8px}
+.whybox ol{padding-left:1.2em;margin:4px 0}
+.whybox .easy{background:#fff;border-radius:8px;padding:6px 10px;margin-top:8px;font-size:15px}
+.mathbox .q{display:flex;gap:10px;align-items:flex-start;margin-bottom:8px}
+.mathbox .q img{flex:none;border-radius:50%;background:#fff}
+.mathbox table{font-size:14px;margin:8px 0;background:#fff}
+.mathbox .calc{background:#fff;border-radius:8px;padding:8px 12px;margin:8px 0;font-size:15px}
+.mathbox .eqline{font-family:var(--mono);background:#fff;border:1px solid #f1d4b8;border-radius:8px;padding:6px 10px;display:inline-block;margin:4px 0}
+/* 장면(시나리오) · 팀 */
+.scene{display:inline-flex;gap:6px;align-items:center;font-size:13px;font-weight:700;border-radius:999px;padding:3px 12px;margin:6px 6px 0 0;background:var(--panel2);color:var(--text)}
+.scene.team-f{background:#fcebea;color:#a32222}.scene.team-r{background:#e3f4f5;color:#08626b}.scene.judge{background:#f1eafb;color:#5a2ea6}.scene.talk-s{background:#fdf3e1;color:#7a4500}
+.teams{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:12px 0}
+@media(max-width:760px){.teams{grid-template-columns:1fr}}
+.team{border-radius:14px;padding:14px 16px;border:2px solid}
+.team.f{border-color:#f1b9b6;background:#fff8f8}.team.r{border-color:#a9dde1;background:#f5fcfc}
+.team h4{margin:0 0 8px}.team .mem{display:flex;gap:10px;align-items:center;margin:6px 0;font-size:14px}
+.team .mem img{border-radius:50%;background:#fff;border:1px solid var(--rule)}
+.judgebar{display:flex;gap:10px;align-items:center;border:2px solid #d8c6f3;background:#faf7ff;border-radius:14px;padding:10px 14px;font-size:14px}
+.stalk{border-left:4px solid #d5dbe2;padding-left:12px;margin:14px 0}
+.stalk .say{margin:6px 0}
+.codefold{border:1px dashed var(--rule);border-radius:10px;padding:6px 12px;margin:12px 0;background:#fbfcfd}
+.codefold summary{cursor:pointer;font-weight:700;color:var(--muted)}
+.codefold table td:first-child{font-family:var(--mono);font-size:13px;white-space:pre-wrap;background:#f3f5f8;width:52%}
+.interp{border-left:4px solid var(--gfp);background:var(--gfp-soft);padding:8px 12px;border-radius:0 10px 10px 0;margin:10px 0}
+.changed{border-left:4px solid var(--amber);background:var(--amber-soft);padding:8px 12px;border-radius:0 10px 10px 0;margin:10px 0;font-size:15px}
+.calm{color:#13733a;font-size:14px}
+/* 건물 (목차) */
+.tower{max-width:760px;margin:16px auto;border:3px solid #2a2f3a;border-radius:6px 6px 0 0;background:#fff}
+.tower .roof{background:#2a2f3a;color:#fff;text-align:center;font-weight:700;padding:6px;font-size:14px}
+.tower a.fl{display:grid;grid-template-columns:62px 1fr auto;gap:10px;align-items:center;padding:8px 12px;border-top:2px solid #2a2f3a;text-decoration:none;color:var(--text);background:repeating-linear-gradient(90deg,#fff 0 60px,#f6f8fa 60px 62px)}
+.tower a.fl:hover{background:#eef6fb}
+.tower a.fl .no{font-weight:700;font-size:20px;color:#1f3b57;text-align:center;background:#e6eefb;border-radius:6px}
+.tower a.fl .ti b{display:block}.tower a.fl .ti span{font-size:13px;color:var(--muted)}
+.tower a.fl.rev .no{background:#e7f5ec;color:#13733a}
+.tower a.fl.slot{background:repeating-linear-gradient(135deg,#fff 0 12px,#fdf3e1 12px 24px);color:var(--muted)}
+.tower a.fl.slot .no{background:#fdf3e1;color:#a35c00}
+.tower a.fl.prac .no{background:#f1eafb;color:#5a2ea6}
+.tower .base{background:#2a2f3a;height:10px}
+.tower .imgs img{border-radius:50%;background:#fff;border:1px solid var(--rule);margin-left:-6px}
+.slotbox{border:2px dashed #e0b97a;background:#fffaf1;border-radius:14px;padding:20px;margin:20px 0}
+.cover svg{width:100%;height:100%;display:block;image-rendering:pixelated}
+.cover .px-scene{position:absolute;inset:0}
+.cover{background:#eef5fb}
