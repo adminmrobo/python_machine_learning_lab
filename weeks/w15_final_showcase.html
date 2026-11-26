@@ -259,6 +259,31 @@ img[data-who]{image-rendering:pixelated}
 .cover img.cover-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 45%;image-rendering:pixelated;display:block}
 .cover.has-img{background:#fff}
 .cover.has-img{max-height:min(64vh,760px)}
+/* 그림 먼저 — 한눈에 보기 · 해 보기 · 접어 둔 자세한 설명 */
+.glance{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:20px;align-items:center;margin:18px 0 16px;background:#fff;border:2px solid var(--rule);border-radius:16px;padding:14px}
+.picfig{margin:0}.picsvg{width:100%;height:auto;display:block}
+.picfig figcaption{font-size:12.5px;color:var(--muted);margin-top:4px;line-height:1.5}
+.gltext .kicker{margin:0 0 8px}
+ol.look{list-style:none;padding:0;margin:0 0 12px;display:grid;gap:10px}
+ol.look li{display:grid;grid-template-columns:26px 1fr;gap:10px;align-items:start;font-size:16.5px;line-height:1.6}
+ol.look b.n{background:#a35c00;color:#fff;border:2px solid #16212b;border-radius:4px;width:26px;height:26px;display:grid;place-items:center;font-size:14px;line-height:1;margin-top:1px}
+.like{background:var(--amber-soft);border-radius:10px;padding:10px 12px;margin:0;font-size:15px;line-height:1.6}
+.like span{display:inline-block;font-weight:700;color:var(--amber);margin-right:8px}
+ol.tryit{list-style:none;margin:0 0 12px;padding:10px 14px;background:var(--gfp-soft);border-radius:10px;font-size:15px;line-height:1.6;counter-reset:t}
+ol.tryit li{counter-increment:t;padding-left:24px;position:relative}
+ol.tryit li::before{content:counter(t);position:absolute;left:0;top:3px;width:18px;height:18px;border-radius:50%;background:var(--gfp);color:#fff;font-size:12px;display:grid;place-items:center;font-weight:700}
+ol.tryit li.hd{font-weight:700;color:var(--gfp);padding-left:0;counter-increment:none}
+ol.tryit li.hd::before{content:none}
+details.deep{border:1.5px solid var(--rule);border-radius:12px;margin:10px 0;padding:0;background:#fff}
+details.deep>summary{cursor:pointer;padding:12px 16px;list-style:none;display:flex;flex-wrap:wrap;gap:4px 12px;align-items:baseline;color:var(--text)}
+details.deep>summary::-webkit-details-marker{display:none}
+details.deep>summary::before{content:"+";display:inline-grid;place-items:center;width:22px;height:22px;border-radius:6px;background:var(--panel2);font-weight:700;color:var(--accent);align-self:center}
+details.deep[open]>summary::before{content:"−"}
+details.deep .dt{font-weight:700}
+details.deep .ds{font-size:13px;color:var(--muted);font-weight:400}
+details.deep>.in{padding:0 16px 14px}
+@media (max-width:860px){.glance{grid-template-columns:1fr;padding:10px;gap:12px}ol.look li{font-size:16px}}
+figure.scene{margin:16px auto 0;max-width:640px}figure.scene img{width:100%;height:auto;display:block;border-radius:12px;image-rendering:pixelated;border:2px solid var(--rule)}
 /* ── 파이썬 머신러닝 연구소 추가 스타일 ── */
 :root{--team-f:#c93030;--team-r:#0b7a86;--floor:#1f3b57}
 section.level{padding-top:88px}
@@ -486,6 +511,12 @@ window.addEventListener('DOMContentLoaded',function(){
   requestAnimationFrame(loop); prog();
 });
 })();
+
+/* 접어 둔 상자: 열면 그림을 다시 그리고, #주소로 오면 감싼 상자를 연다 */
+document.addEventListener('toggle',function(e){if(e.target.open)setTimeout(function(){dispatchEvent(new Event('resize'))},30)},true);
+function openTo(h){try{var el=h&&h.length>1&&document.getElementById(decodeURIComponent(h.slice(1)));var d=el&&el.closest('details');while(d){d.open=true;d=d.parentElement&&d.parentElement.closest('details')}}catch(_){}}
+document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href^="#"]');if(a)openTo(a.getAttribute('href'))});
+addEventListener('hashchange',function(){openTo(location.hash)});if(location.hash)openTo(location.hash);
 
 /* ══ 파이썬 머신러닝 연구소 — 실험 위젯 (외부 라이브러리 없음) ══
    <div class="mlw" data-w="이름" data-cfg='{...}'></div> 를 ML.init()이 찾아 붙인다.

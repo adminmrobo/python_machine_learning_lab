@@ -145,3 +145,9 @@ window.addEventListener('DOMContentLoaded',function(){
   requestAnimationFrame(loop); prog();
 });
 })();
+
+/* 접어 둔 상자: 열면 그림을 다시 그리고, #주소로 오면 감싼 상자를 연다 */
+document.addEventListener('toggle',function(e){if(e.target.open)setTimeout(function(){dispatchEvent(new Event('resize'))},30)},true);
+function openTo(h){try{var el=h&&h.length>1&&document.getElementById(decodeURIComponent(h.slice(1)));var d=el&&el.closest('details');while(d){d.open=true;d=d.parentElement&&d.parentElement.closest('details')}}catch(_){}}
+document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href^="#"]');if(a)openTo(a.getAttribute('href'))});
+addEventListener('hashchange',function(){openTo(location.hash)});if(location.hash)openTo(location.hash);

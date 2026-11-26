@@ -7,6 +7,7 @@ import os, re, json, base64, html, glob, sys
 HERE = os.path.dirname(os.path.abspath(__file__)); ROOT = os.path.dirname(HERE)
 sys.path.insert(0, HERE)
 import pixel
+from pics import PIC
 CSS = open(os.path.join(HERE, 'lab.css'), encoding='utf-8').read() + open(os.path.join(HERE, 'ml.css'), encoding='utf-8').read()
 JS = open(os.path.join(HERE, 'lab.js'), encoding='utf-8').read() + '\n' + open(os.path.join(HERE, 'ml.js'), encoding='utf-8').read()
 KGX = open(os.path.join(HERE, 'kgx.js'), encoding='utf-8').read()
@@ -166,27 +167,53 @@ def whymath(s):
     h.append('</div>')
     return ''.join(h) if len(h) > 2 else ''
 
+def glance_html(P, s):
+    g = PIC.get((P['num'], s['id']))
+    if not g: return ''
+    alt = ' '.join(g['look'])
+    svg = g['svg'].replace('<svg ', '<svg role="img" aria-label="%s" ' % E(alt), 1)
+    look = ''.join('<li><b class="n">%s</b><span>%s</span></li>' % ('①②③'[k], t) for k, t in enumerate(g['look']))
+    sk = 'scene_%s_%s' % (P['num'], s['id']); scene = ''
+    if os.path.exists(os.path.join(ROOT, 'assets', 'img', 'scene', sk + '.webp')):
+        scene = '<figure class="scene"><img src="../assets/img/scene/%s.webp" width="1200" height="800" alt="%s" loading="lazy" decoding="async"></figure>' % (sk, E(g['like']))
+    return scene + ('<div class="glance"><figure class="picfig">%s<figcaption>그림 속 번호 ①②③은 옆 설명의 순서와 같습니다.</figcaption></figure>'
+            '<div class="gltext"><p class="kicker">한눈에 보기</p><ol class="look">%s</ol><p class="like"><span>비유</span>%s</p></div></div>') % (svg, look, g['like'])
+
+def tryit_html(P, s):
+    g = PIC.get((P['num'], s['id']))
+    if not g or not g.get('tryit'): return ''
+    return '<ol class="tryit"><li class="hd">이렇게 해 보세요</li>%s</ol>' % ''.join('<li>%s</li>' % t for t in g['tryit'])
+
+def deep(title, sub, inner):
+    if not inner.strip(): return ''
+    return '<details class="deep"><summary><span class="dt">%s</span><span class="ds">%s</span></summary><div class="in">%s</div></details>' % (title, sub, inner)
+
 def step_html(P, i, s):
     h = ['<section class="level" id="%s"><div class="wrap">' % s['id']]
     h.append('<div class="lvhead"><span class="hex">%d</span><div><h2>%s</h2>%s<span class="tag m">개념: %s</span><span class="tag a">%s</span></div></div>' % (
         i + 1, s['title'], ''.join(scene_chip(sc) for sc in s.get('scenes', [])), s['concept'], s['tag']))
-    if s.get('situation'): h.append('<p class="kicker" style="margin-top:10px">상황</p>' + say('doc', 'think', s['situation']))
-    h.append(whymath(s))
-    if s.get('pair'):
-        (lt, lb), (rt, rb) = s['pair']; h.append('<div class="pair"><div><h4>%s</h4><p>%s</p></div><div><h4>%s</h4><p>%s</p></div></div>' % (lt, lb, rt, rb))
-    if s.get('body'): h.append(s['body'])
-    if s.get('talk'): h.append('<div class="stalk">%s</div>' % ''.join(say(*t) for t in s['talk']))
-    if s.get('panel'): h.append('<div class="panel"><p class="ptitle">%s</p>%s</div>' % (s.get('panel_title', '직접 해 보기'), s['panel']))
+    h.append(glance_html(P, s))
+    tr = tryit_html(P, s)
+    if s.get('panel'): h.append('<div class="panel"><p class="ptitle">%s</p>%s%s</div>' % (s.get('panel_title', '직접 해 보기'), tr, s['panel'])); tr = ''
     if s.get('flow'):
-        f = s['flow']; h.append('<div class="panel"><p class="ptitle">흐름으로 보기 — %s</p><canvas class="cv flow" id="%s" style="height:%dpx" role="img" aria-label="%s"></canvas><p class="cvcap">%s</p></div>' % (f['title'], f['id'], f.get('h', 230), E(f['alt']), f['cap']))
+        f = s['flow']; h.append('<div class="panel"><p class="ptitle">흐름으로 보기 — %s</p>%s<canvas class="cv flow" id="%s" style="height:%dpx" role="img" aria-label="%s"></canvas><p class="cvcap">%s</p></div>' % (f['title'], tr, f['id'], f.get('h', 230), E(f['alt']), f['cap']))
+    # 천천히 읽고 싶을 때 — 접어 둔 자세한 설명
+    a = (('<p class="kicker" style="margin-top:4px">상황</p>' + say('doc', 'think', s['situation'])) if s.get('situation') else '') + whymath(s)
+    h.append(deep('왜 이 방법을 쓰나 · 수식 천천히 보기', '박사의 질문과 조수의 수식 질문', a))
+    b = []
+    if s.get('pair'):
+        (lt, lb), (rt, rb) = s['pair']; b.append('<div class="pair"><div><h4>%s</h4><p>%s</p></div><div><h4>%s</h4><p>%s</p></div></div>' % (lt, lb, rt, rb))
+    if s.get('body'): b.append(s['body'])
+    if s.get('talk'): b.append('<div class="stalk">%s</div>' % ''.join(say(*t) for t in s['talk']))
     if s.get('explain'):
-        h.append('<div class="explain"><b>풀어서 보면</b>%s%s%s</div>' % (s['explain'], ('<p class="interp"><b>이 숫자는 업무에서 —</b> %s</p>' % s['interp']) if s.get('interp') else '', ('<p class="limit"><b>이 단계의 한계 —</b> %s</p>' % s['limit']) if s.get('limit') else ''))
-    if s.get('changed'): h.append('<p class="changed"><b>원자료와 다른 값 —</b> %s</p>' % s['changed'])
-    if s.get('aicheck'): h.append('<div class="ai-check"><h4>AI·도구 결과 판단 코너</h4>%s</div>' % s['aicheck'])
+        b.append('<div class="explain"><b>풀어서 보면</b>%s%s%s</div>' % (s['explain'], ('<p class="interp"><b>이 숫자는 업무에서 —</b> %s</p>' % s['interp']) if s.get('interp') else '', ('<p class="limit"><b>이 단계의 한계 —</b> %s</p>' % s['limit']) if s.get('limit') else ''))
+    if s.get('changed'): b.append('<p class="changed"><b>원자료와 다른 값 —</b> %s</p>' % s['changed'])
+    if s.get('say'): b.append(say(*s['say']))
+    h.append(deep('팀 대화와 자세한 풀이', '일상 비유 · 실험 결과 읽기 · 이 단계의 한계', ''.join(b)))
+    if s.get('aicheck'): h.append(deep('AI·도구 결과 판단 코너', 'AI가 낸 답에서 이상한 점 찾기', s['aicheck']))
     if s.get('code'):
         rows = ''.join('<tr><td>%s</td><td>%s</td></tr>' % (E(c), m) for c, m in s['code'])
-        h.append('<details class="codefold"><summary>교안의 파이썬 코드로 보면 (몰라도 됩니다)</summary><div class="tbl"><table><thead><tr><th>코드 한 줄</th><th>뜻</th></tr></thead><tbody>%s</tbody></table></div></details>' % rows)
-    if s.get('say'): h.append(say(*s['say']))
+        h.append(deep('교안의 파이썬 코드로 보면', '몰라도 됩니다', '<div class="tbl"><table><thead><tr><th>코드 한 줄</th><th>뜻</th></tr></thead><tbody>%s</tbody></table></div>' % rows))
     if s.get('quiz'): h.append('<div class="quiz" data-quiz="%s"></div>' % s['id'])
     h.append('</div></section>')
     return '\n'.join(x for x in h if x)
@@ -270,8 +297,9 @@ def page_html(P, prev, nxt, fname):
     B.append(duel_html(P['duel']))
     B.append('<section class="level" id="summary"><div class="wrap"><h2>정리 — 한 장으로</h2>%s</div></section>' % P['summary'])
     B.append('<section class="level outro" id="outro"><div class="wrap"><h2>오늘의 마무리</h2><div class="talk">%s</div>%s</div></section>' % (''.join(say(*t) for t in P['outro']), P.get('next_note', '')))
+    B.append('<section class="level" id="more"><div class="wrap"><details class="deep more"><summary><span class="dt">더 공부하고 싶은 분께 — 지식 색인 · 자료 꾸러미</span><span class="ds">이 층의 개념 지도와 내려받기 (몰라도 됩니다)</span></summary><div class="in">')
     B.append('<section class="kgx kgx-sec level" id="kg"><div class="kgx-wrap"><h2>지식 색인 — 이 층에서 찾아보기</h2><p class="kgx-sub">이 층에 나온 개념, 용어, 주장, 열린 질문을 한곳에 모았습니다. 검색하고, 항목을 눌러 관계를 보고, “본문”으로 돌아갑니다.</p><div id="kg-mount"></div></div></section>')
-    B.append('<section class="kgx kgx-sec level" id="export"><div class="kgx-wrap"><h2>온톨로지·서지 꾸러미 — 이 층의 지식을 가져가기</h2><p class="kgx-sub">지식 색인을 출처와 함께 파일로 내려받습니다. Zotero(BibTeX·RIS), Protégé(Turtle), Neo4j·Gephi(CSV), 여러 페이지 합치기(kg.json)에 씁니다.</p><div id="export-mount"></div></div></section></main>')
+    B.append('<section class="kgx kgx-sec level" id="export"><div class="kgx-wrap"><h2>온톨로지·서지 꾸러미 — 이 층의 지식을 가져가기</h2><p class="kgx-sub">지식 색인을 출처와 함께 파일로 내려받습니다. Zotero(BibTeX·RIS), Protégé(Turtle), Neo4j·Gephi(CSV), 여러 페이지 합치기(kg.json)에 씁니다.</p><div id="export-mount"></div></div></section></div></details></div></section></main>')
     B.append(footer(P, prev, nxt))
     body = '\n'.join(B)
     sp, exmap = collect_sprites(body)
