@@ -283,3 +283,26 @@ details.deep .ds{font-size:13px;color:var(--muted);font-weight:400}
 details.deep>.in{padding:0 16px 14px}
 @media (max-width:860px){.glance{grid-template-columns:1fr;padding:10px;gap:12px}ol.look li{font-size:16px}}
 figure.scene{margin:16px auto 0;max-width:640px}figure.scene img{width:100%;height:auto;display:block;border-radius:12px;image-rendering:pixelated;border:2px solid var(--rule)}
+/* 생성형 AI 실습 카드 */
+.aisec{padding-top:24px}
+.aicard{border:2px solid var(--rule);border-radius:16px;padding:18px 18px 14px;background:#fff}
+.aihead{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;margin-bottom:6px}
+.aihead h3{margin:0;font-size:20px}
+.aitag{background:#0b7a86;color:#fff;font-weight:700;font-size:13px;padding:3px 10px;border-radius:999px}
+.aistep{display:flex;align-items:center;gap:8px;margin:16px 0 8px;font-size:15px}
+.ain{display:inline-grid;place-items:center;width:24px;height:24px;border-radius:6px;background:#16212b;color:#fff;font-weight:700;font-size:13px}
+details.codecell{border:1px solid #d0d7de;border-left:4px solid #f9ab00;border-radius:8px;background:#f8f9fa}
+details.codecell>summary{cursor:pointer;padding:10px 12px;font-weight:700;font-size:14.5px}
+details.codecell>summary span{font-weight:400;color:var(--muted);font-size:13px}
+details.codecell pre{margin:0;padding:12px 14px;overflow:auto;font-size:13px;line-height:1.55;background:#fff;border-top:1px solid #e1e4e8;border-radius:0 0 8px 8px}
+.runout{border:1px solid #d0d7de;border-radius:8px;background:#fff;overflow:hidden}
+.runout .rh{background:#f1f3f4;font-size:12.5px;color:#5f6368;padding:6px 12px;font-weight:700}
+.runout pre{margin:0;padding:12px 14px;font-size:13px;line-height:1.55;overflow:auto;white-space:pre}
+.runout img{display:block;width:100%;max-width:640px;height:auto;margin:6px auto 10px}
+.aifoot{margin-top:14px;display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center}
+.aifoot p{flex:1 1 280px;margin:0;font-size:12.5px;color:var(--muted);line-height:1.6}
+.colabbtn{display:inline-block;background:#f9ab00;color:#16212b;font-weight:700;padding:9px 14px;border-radius:10px;text-decoration:none;border:2px solid #16212b}
+.colabbtn:hover{background:#ffc233}
+.illsec{padding-top:20px}figure.ill{margin:0 auto;max-width:760px}figure.ill img{width:100%;height:auto;display:block;border-radius:14px;image-rendering:pixelated;border:2px solid var(--rule)}
+@media (max-width:860px){.aicard{padding:14px 12px 12px}.aihead h3{font-size:18px}}
+.codecell pre code,.runout pre code{padding:0;background:none;border:0;font-size:inherit;color:inherit;border-radius:0}

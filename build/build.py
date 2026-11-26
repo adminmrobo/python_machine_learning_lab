@@ -8,6 +8,7 @@ HERE = os.path.dirname(os.path.abspath(__file__)); ROOT = os.path.dirname(HERE)
 sys.path.insert(0, HERE)
 import pixel
 from pics import PIC
+from aicards import CARDS as AICARDS
 CSS = open(os.path.join(HERE, 'lab.css'), encoding='utf-8').read() + open(os.path.join(HERE, 'ml.css'), encoding='utf-8').read()
 JS = open(os.path.join(HERE, 'lab.js'), encoding='utf-8').read() + '\n' + open(os.path.join(HERE, 'ml.js'), encoding='utf-8').read()
 KGX = open(os.path.join(HERE, 'kgx.js'), encoding='utf-8').read()
@@ -188,6 +189,40 @@ def deep(title, sub, inner):
     if not inner.strip(): return ''
     return '<details class="deep"><summary><span class="dt">%s</span><span class="ds">%s</span></summary><div class="in">%s</div></details>' % (title, sub, inner)
 
+AI_OUT = None
+COLAB = 'https://colab.research.google.com/github/adminmrobo/python_machine_learning_lab/blob/main/notebooks/colab/w%s_ai_practice.ipynb'
+def aicard_html(P, k):
+    global AI_OUT
+    c = AICARDS.get((P['num'], k))
+    if not c: return ''
+    if AI_OUT is None: AI_OUT = json.load(open(os.path.join(ROOT, 'build', 'aicards_out.json'), encoding='utf-8'))
+    r = AI_OUT['cards']['%s_%d' % (P['num'], k)]
+    imgs = ''
+    for im in r['imgs']:
+        src = os.path.join(ROOT, 'assets', 'img', 'run', im); webp = im.replace('.png', '.webp')
+        dst = os.path.join(ROOT, 'assets', 'img', 'run', webp)
+        if os.path.exists(src) and (not os.path.exists(dst) or os.path.getmtime(dst) < os.path.getmtime(src)):
+            from PIL import Image; Image.open(src).save(dst, 'WEBP', lossless=True)
+        imgs += '<img src="../assets/img/run/%s" width="640" height="380" alt="%s — 실행 결과 그래프" loading="lazy" decoding="async">' % (webp, E(c['title']))
+    n = c['code'].count('\n') + 1
+    return ('<section class="level aisec" id="ai%d"><div class="wrap"><div class="aicard">'
+            '<div class="aihead"><span class="aitag">생성형 AI 실습 %d</span><h3>%s</h3></div>'
+            '<div class="aistep"><span class="ain">1</span><b>이렇게 물었습니다 — 프롬프트</b></div>%s'
+            '<div class="aistep"><span class="ain">2</span><b>AI가 낸 파이썬 코드</b></div>'
+            '<details class="codecell"><summary>코드 %d줄 펼쳐 보기 <span>(몰라도 됩니다 · 그대로 복사해 Colab에 붙여 넣으면 돌아갑니다)</span></summary><pre><code>%s</code></pre></details>'
+            '<div class="aistep"><span class="ain">3</span><b>실제로 실행한 결과</b></div>'
+            '<div class="runout"><div class="rh">▶ 출력</div>%s%s</div>'
+            '<div class="aistep"><span class="ain">4</span><b>그대로 믿어도 될까? — 박사의 판단</b></div>%s'
+            '<div class="aifoot"><a class="colabbtn" href="%s" target="_blank" rel="noopener">Colab에서 열어 직접 실행하기</a>'
+            '<p>코드는 이 페이지를 만들 때 생성형 AI가 작성한 응답 예시이고, 결과는 그 코드를 그대로 실행한 것입니다 (%s). Colab에서는 라이브러리 버전에 따라 소수점이 조금 다를 수 있습니다.</p></div>'
+            '</div></div></section>') % (k, k, c['title'], say(c['who'], 'think', c['prompt'].replace('\n', '<br>')), n, E(c['code']),
+            ('<pre>%s</pre>' % E(r['out'])) if r['out'] else '', imgs, say('doc', 'smile', c['judge']), COLAB % P['num'], AI_OUT['env'])
+
+def ill_html(P, k):
+    key = 'ill_%s_%d' % (P['num'], k)
+    if not os.path.exists(os.path.join(ROOT, 'assets', 'img', 'ill', key + '.webp')): return ''
+    return '<section class="level illsec"><div class="wrap"><figure class="ill"><img src="../assets/img/ill/%s.webp" width="1200" height="800" alt="%s층 장면 그림 %d" loading="lazy" decoding="async"></figure></div></section>' % (key, int(P['num']), k)
+
 def step_html(P, i, s):
     h = ['<section class="level" id="%s"><div class="wrap">' % s['id']]
     h.append('<div class="lvhead"><span class="hex">%d</span><div><h2>%s</h2>%s<span class="tag m">개념: %s</span><span class="tag a">%s</span></div></div>' % (
@@ -292,7 +327,14 @@ def page_html(P, prev, nxt, fname):
         teams_html(), ('<div class="recap"><b>30초 복습 — </b>%s</div>' % P['recap']) if P.get('recap') else '', notion))
     why = ''.join('<div><span class="n">%d</span><b>%s</b>%s</div>' % (i + 1, a, b) for i, (a, b) in enumerate(P['why']))
     B.append('<section class="level" id="why"><div class="wrap"><h2>%s</h2><div class="steps">%s</div>%s%s</div></section>' % (P.get('why_title', '왜 이 층에 왔나'), why, P.get('bigpicture', ''), say(*P['why_say']) if P.get('why_say') else ''))
-    for i, s in enumerate(P['steps']): B.append(step_html(P, i, s))
+    last = len(P['steps']) - 1
+    for i, s in enumerate(P['steps']):
+        B.append(step_html(P, i, s))
+        if P['num'] in ('11', '12', '13', '14', '15'): continue
+        if i == 0: B.append(ill_html(P, 1))
+        if i == 1: B.append(aicard_html(P, 1))
+        if i == 2: B.append(ill_html(P, 2))
+        if i == last: B.append(aicard_html(P, 2))
     for xs in P.get('extra_sections', []): B.append(xs)
     B.append(duel_html(P['duel']))
     B.append('<section class="level" id="summary"><div class="wrap"><h2>정리 — 한 장으로</h2>%s</div></section>' % P['summary'])
