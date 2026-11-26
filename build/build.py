@@ -218,10 +218,11 @@ def aicard_html(P, k):
             '</div></div></section>') % (k, k, c['title'], say(c['who'], 'think', c['prompt'].replace('\n', '<br>')), n, E(c['code']),
             ('<pre>%s</pre>' % E(r['out'])) if r['out'] else '', imgs, say('doc', 'smile', c['judge']), COLAB % P['num'], AI_OUT['env'])
 
+ILL_ALT = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'ill_alt.json'), encoding='utf-8'))
 def ill_html(P, k):
     key = 'ill_%s_%d' % (P['num'], k)
     if not os.path.exists(os.path.join(ROOT, 'assets', 'img', 'ill', key + '.webp')): return ''
-    return '<section class="level illsec"><div class="wrap"><figure class="ill"><img src="../assets/img/ill/%s.webp" width="1200" height="800" alt="%s층 장면 그림 %d" loading="lazy" decoding="async"></figure></div></section>' % (key, int(P['num']), k)
+    return '<section class="level illsec"><div class="wrap"><figure class="ill"><img src="../assets/img/ill/%s.webp" width="1200" height="800" alt="%s" loading="lazy" decoding="async"><figcaption>%s</figcaption></figure></div></section>' % (key, E(ILL_ALT.get(key, '')), ILL_ALT.get(key, ''))
 
 def step_html(P, i, s):
     h = ['<section class="level" id="%s"><div class="wrap">' % s['id']]
