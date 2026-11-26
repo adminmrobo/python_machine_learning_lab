@@ -70,7 +70,7 @@ A taxi-fare wall made of pinned receipt cards arranged by distance; Haru stretch
 ### ill_02_2 — 2층 · 모두 같은 답을 찍는 사이 떠나는 두 손님
 
 ```
-Ten pixel customers walk past a reception desk where a sleepy robot stamps every ticket the same way; two customers in red quietly leave through a side door; X2 at a laptop points at a 2x2 grid of colored boxes on the screen. 3:2 landscape, 16-bit RPG pixel art, white or light background, no text, no letters, no numbers.
+Ten pixel customers walk past a reception desk where a small gray stamping machine (an object, not a character) stamps every ticket the same way; two customers in red quietly leave through a side door; X2 at a laptop points at a 2x2 grid of colored boxes on the screen. 3:2 landscape, 16-bit RPG pixel art, white or light background, no text, no letters, no numbers.
 ```
 
 ### ill_03_1 — 3층 · 모의고사 다섯 번과 점수의 기복
