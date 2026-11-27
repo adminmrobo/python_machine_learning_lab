@@ -255,7 +255,7 @@ img[data-who]{image-rendering:pixelated}
 .dash textarea.dq{width:100%;min-height:110px;font:13px/1.5 ui-monospace,Consolas,monospace;border:1px solid var(--rule);border-radius:8px;padding:8px}
 .dash .ok{color:#13733a;font-weight:700}.dash .ng{color:#c9302c;font-weight:700}
 
-.cover img.cover-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 45%;image-rendering:pixelated;display:block}
+.cover img.cover-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 45%;image-rendering:auto;display:block}
 .cover.has-img{background:#fff}
 .cover.has-img{max-height:min(64vh,760px)}
 /* 그림 먼저 — 한눈에 보기 · 해 보기 · 접어 둔 자세한 설명 */
@@ -282,7 +282,7 @@ details.deep .dt{font-weight:700}
 details.deep .ds{font-size:13px;color:var(--muted);font-weight:400}
 details.deep>.in{padding:0 16px 14px}
 @media (max-width:860px){.glance{grid-template-columns:1fr;padding:10px;gap:12px}ol.look li{font-size:16px}}
-figure.scene{margin:16px auto 0;max-width:640px}figure.scene img{width:100%;height:auto;display:block;border-radius:12px;image-rendering:pixelated;border:2px solid var(--rule)}
+figure.scenepic{margin:16px auto 0;max-width:640px}figure.scenepic img{width:100%;height:auto;display:block;border-radius:12px;image-rendering:auto;border:2px solid var(--rule)}
 /* 생성형 AI 실습 카드 */
 .aisec{padding-top:24px}
 .aicard{border:2px solid var(--rule);border-radius:16px;padding:18px 18px 14px;background:#fff}
@@ -303,7 +303,7 @@ details.codecell pre{margin:0;padding:12px 14px;overflow:auto;font-size:13px;lin
 .aifoot p{flex:1 1 280px;margin:0;font-size:12.5px;color:var(--muted);line-height:1.6}
 .colabbtn{display:inline-block;background:#f9ab00;color:#16212b;font-weight:700;padding:9px 14px;border-radius:10px;text-decoration:none;border:2px solid #16212b}
 .colabbtn:hover{background:#ffc233}
-.illsec{padding-top:20px}figure.ill{margin:0 auto;max-width:760px}figure.ill img{width:100%;height:auto;display:block;border-radius:14px;image-rendering:pixelated;border:2px solid var(--rule)}
+.illsec{padding-top:20px}figure.ill{margin:0 auto;max-width:760px}figure.ill img{width:100%;height:auto;display:block;border-radius:14px;image-rendering:auto;border:2px solid var(--rule)}
 @media (max-width:860px){.aicard{padding:14px 12px 12px}.aihead h3{font-size:18px}}
 .codecell pre code,.runout pre code{padding:0;background:none;border:0;font-size:inherit;color:inherit;border-radius:0}
 figure.ill figcaption{text-align:center;font-size:13.5px;color:var(--muted);margin-top:6px}

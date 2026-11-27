@@ -141,9 +141,11 @@ def jsonld(kg, meta):
 # ── 조각 ───────────────────────────────────────
 def cover_img(key, alt, chip, rel='../'):
     if os.path.exists(os.path.join(ROOT, 'assets', 'img', key + '.webp')):
-        # 표지: 960×540 픽셀 원화(2px 격자)를 1920(1x)·3840(2x)으로 — 고해상도 화면은 2x를 받음
-        hi = os.path.exists(os.path.join(ROOT, 'assets', 'img', key + '@2x.webp'))
-        srcset = (' srcset="%sassets/img/%s.webp 1920w, %sassets/img/%s@2x.webp 3840w" sizes="100vw"' % (rel, key, rel, key)) if hi else ''
+        # 표지: 1920(1x)과 원본 크기(2x) 두 장 — 고해상도 화면은 2x를 받음
+        hp = os.path.join(ROOT, 'assets', 'img', key + '@2x.webp'); srcset = ''
+        if os.path.exists(hp):
+            from PIL import Image
+            srcset = ' srcset="%sassets/img/%s.webp 1920w, %sassets/img/%s@2x.webp %dw" sizes="100vw"' % (rel, key, rel, key, Image.open(hp).width)
         return ('<!-- lab-cover --><header class="cover has-img" id="cover" role="img" aria-label="%s"><img class="cover-img" src="%sassets/img/%s.webp"%s width="1920" height="1080" alt="%s" decoding="async" fetchpriority="high">'
                 '<span class="cover-chip">%s</span></header><!-- /lab-cover -->') % (E(alt), rel, key, srcset, E(alt), chip)
     return None
@@ -179,7 +181,7 @@ def glance_html(P, s):
     look = ''.join('<li><b class="n">%s</b><span>%s</span></li>' % ('①②③'[k], t) for k, t in enumerate(g['look']))
     sk = 'scene_%s_%s' % (P['num'], s['id']); scene = ''
     if os.path.exists(os.path.join(ROOT, 'assets', 'img', 'scene', sk + '.webp')):
-        scene = '<figure class="scene"><img src="../assets/img/scene/%s.webp" width="1200" height="800" alt="%s" loading="lazy" decoding="async"></figure>' % (sk, E(g['like']))
+        scene = '<figure class="scenepic"><img src="../assets/img/scene/%s.webp" width="1200" height="800" alt="%s" loading="lazy" decoding="async"></figure>' % (sk, E(g['like']))
     return scene + ('<div class="glance"><figure class="picfig">%s<figcaption>그림 속 번호 ①②③은 옆 설명의 순서와 같습니다.</figcaption></figure>'
             '<div class="gltext"><p class="kicker">한눈에 보기</p><ol class="look">%s</ol><p class="like"><span>비유</span>%s</p></div></div>') % (svg, look, g['like'])
 
