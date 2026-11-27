@@ -1,5 +1,6 @@
 # 생성형 AI 실습 카드의 코드를 실제로 실행해 결과(출력 글·그래프)를 저장하고, 층마다 Colab 노트북을 만든다.
-# 사용: python3 build/run_cards.py   (인터넷 대신 저장소 data/ 와 /tmp/insurance.csv 를 읽는다)
+# 사용: python3 build/run_cards.py [층 번호 …]   (인터넷 대신 저장소 data/ 와 /tmp/insurance.csv 를 읽는다)
+#       층 번호를 주면 그 층 카드만 다시 실행하고, 나머지 층 결과는 aicards_out.json에 있던 그대로 둔다.
 import io, os, sys, json, base64, contextlib, platform
 import matplotlib
 matplotlib.use('Agg')
@@ -20,8 +21,11 @@ def read_csv(p, *a, **k):
 pd.read_csv = read_csv
 plt.rcParams.update({'figure.figsize': (6.4, 3.8), 'figure.dpi': 100})
 
-out = {}
+ONLY = set(sys.argv[1:])
+OUTF = os.path.join(ROOT, 'build', 'aicards_out.json')
+out = json.load(open(OUTF, encoding='utf-8'))['cards'] if ONLY and os.path.exists(OUTF) else {}
 for (num, k), c in sorted(CARDS.items()):
+    if ONLY and num not in ONLY: continue
     shots = []
     def show(*a, **kw):
         fig = plt.gcf(); fig.tight_layout()
@@ -35,11 +39,12 @@ for (num, k), c in sorted(CARDS.items()):
     print(num, k, 'ok', len(shots), 'img')
 
 env = 'Python %s · pandas %s · scikit-learn %s · NumPy %s · matplotlib %s' % (platform.python_version(), pd.__version__, sklearn.__version__, numpy.__version__, matplotlib.__version__)
-json.dump(dict(env=env, cards=out), open(os.path.join(ROOT, 'build', 'aicards_out.json'), 'w'), ensure_ascii=False, indent=1)
+json.dump(dict(env=env, cards=out), open(OUTF, 'w'), ensure_ascii=False, indent=1)
 
 # 층마다 Colab 노트북 (프롬프트 → 코드 → 저장된 실행 결과)
 def md(s): return {'cell_type': 'markdown', 'metadata': {}, 'source': s.splitlines(True)}
 for num in sorted({n for n, _ in CARDS}):
+    if ONLY and num not in ONLY: continue
     cells = [md('# %s층 · 생성형 AI 실습\n\n프롬프트를 AI에게 보내 받은 파이썬 코드입니다. 위에서부터 셀을 차례로 실행해 보세요.\n데이터는 GitHub 저장소에서 바로 불러옵니다.\n\n저장된 결과는 %s 로 실행한 것입니다. Colab에서는 라이브러리 버전에 따라 소수점이 조금 다를 수 있습니다.' % (int(num), env))]
     for k in (1, 2):
         c = CARDS[(num, k)]; r = out['%s_%d' % (num, k)]

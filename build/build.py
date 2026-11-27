@@ -141,8 +141,11 @@ def jsonld(kg, meta):
 # ── 조각 ───────────────────────────────────────
 def cover_img(key, alt, chip, rel='../'):
     if os.path.exists(os.path.join(ROOT, 'assets', 'img', key + '.webp')):
-        return ('<!-- lab-cover --><header class="cover has-img" id="cover" role="img" aria-label="%s"><img class="cover-img" src="%sassets/img/%s.webp" width="1920" height="1080" alt="%s" decoding="async" fetchpriority="high">'
-                '<span class="cover-chip">%s</span></header><!-- /lab-cover -->') % (E(alt), rel, key, E(alt), chip)
+        # 표지: 960×540 픽셀 원화(2px 격자)를 1920(1x)·3840(2x)으로 — 고해상도 화면은 2x를 받음
+        hi = os.path.exists(os.path.join(ROOT, 'assets', 'img', key + '@2x.webp'))
+        srcset = (' srcset="%sassets/img/%s.webp 1920w, %sassets/img/%s@2x.webp 3840w" sizes="100vw"' % (rel, key, rel, key)) if hi else ''
+        return ('<!-- lab-cover --><header class="cover has-img" id="cover" role="img" aria-label="%s"><img class="cover-img" src="%sassets/img/%s.webp"%s width="1920" height="1080" alt="%s" decoding="async" fetchpriority="high">'
+                '<span class="cover-chip">%s</span></header><!-- /lab-cover -->') % (E(alt), rel, key, srcset, E(alt), chip)
     return None
 
 def cover(P):
@@ -331,7 +334,7 @@ def page_html(P, prev, nxt, fname):
     last = len(P['steps']) - 1
     for i, s in enumerate(P['steps']):
         B.append(step_html(P, i, s))
-        if P['num'] in ('11', '12', '13', '14', '15'): continue
+        if P['num'] in ('12', '13', '14', '15'): continue
         if i == 0: B.append(ill_html(P, 1))
         if i == 1: B.append(aicard_html(P, 1))
         if i == 2: B.append(ill_html(P, 2))

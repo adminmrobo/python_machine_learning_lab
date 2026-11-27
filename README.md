@@ -48,7 +48,8 @@
 | 8F | 8 | [**중간 점검실**](weeks/w08_midterm_review.html) | 초파리팀 승 |
 | 9F | 9 | [회귀 모델 읽기 — 오차 · 결정계수 · SHAP](weeks/w09_reading_regression_models.html) | 주판봇팀 승 |
 | 10F | 10 | [실제 사례 — 드문 청구 잡기와 의료비 예측](weeks/w10_real_cases_insurance.html) | 초파리팀 승 |
-| 11F~15F | 11~15 | 공사 중 (강의 자료를 받으면 엽니다) | — |
+| 11F | 11 | [물고기 한 마리에서 — 나무 · 숲 · 내리막 걸음](weeks/w11_fish_trees_forest_gradient.html) | 주판봇팀 승 |
+| 12F~15F | 12~15 | 공사 중 (강의 자료를 받으면 엽니다) | — |
 | B1 | — | [**지하 실전 연습장**](practice/index.html) — 생선가게 · 택시회사 · 배터리 공장 · 보험사 | 미션 판정 |
 
 ## 구성
@@ -59,6 +60,7 @@ weeks/wNN_*.html           층 페이지 (단일 파일)
 practice/index.html        지하 실전 연습장 (네 장면, 미션 자동 판정)
 data/rides.csv             택시 1,200건 (수업용 합성 데이터)
 data/payments.csv          결제 800건 (수업용 합성 데이터)
+data/fishmarket_practice.csv  물고기 159마리 (공개 Fish Market 데이터, 11층)
 data/KG_00_registry.json   지식 그래프 등록부
 notebooks/                 실습 노트북 (출력 제거, 정답 변환 오류 'No': 1 → 0 수정)
 build/                     빌드 (python3 build/build.py)
@@ -75,6 +77,7 @@ docs/                      검토 보고서 · 그림 지시문
 
 - 2·3층의 숫자는 rides.csv · payments.csv로 교안과 같은 설정에서 **다시 실행해 확인**했습니다. 교안 예시와 다른 곳은 페이지의 「원자료와 다른 값」 상자에 밝혔습니다.
 - 5~10층의 점수는 각 교안이 보고한 실행 결과를 옮겼습니다.
+- 11층의 숫자는 fishmarket_practice.csv로 이 사이트를 만들 때 **직접 실행**한 값입니다. 교안의 표·차트는 수업용 가상 수치라, 다른 곳은 「원자료와 다른 값」 상자에 밝혔습니다.
 - 페이지 안 실험의 점 분포 중 일부는 설명용 모형이며, 바닥글에 표시했습니다.
 
 ---
@@ -125,7 +128,8 @@ docs/                      검토 보고서 · 그림 지시문
 | 8F | 8 | [**期中检查室**](weeks/w08_midterm_review.zh.html) | 果蝇队胜 |
 | 9F | 9 | [读懂回归模型 —— 误差 · 决定系数 · SHAP](weeks/w09_reading_regression_models.zh.html) | 算盘宝队胜 |
 | 10F | 10 | [真实案例 —— 捕捉罕见理赔与预测医疗费](weeks/w10_real_cases_insurance.zh.html) | 果蝇队胜 |
-| 11F~15F | 11~15 | 施工中（收到讲义后开放） | — |
+| 11F | 11 | [从一条鱼开始 —— 树 · 森林 · 下坡的脚步](weeks/w11_fish_trees_forest_gradient.zh.html) | 算盘宝队胜 |
+| 12F~15F | 12~15 | 施工中（收到讲义后开放） | — |
 | B1 | — | [**地下实战练习场**](practice/index.zh.html) —— 鱼店 · 出租车公司 · 电池工厂 · 保险公司 | 任务判定 |
 
 ## 构成
@@ -136,6 +140,7 @@ weeks/wNN_*.html           층 페이지 (단일 파일)
 practice/index.html        지하 실전 연습장 (네 장면, 미션 자동 판정)
 data/rides.csv             택시 1,200건 (수업용 합성 데이터)
 data/payments.csv          결제 800건 (수업용 합성 데이터)
+data/fishmarket_practice.csv  鱼159条（公开 Fish Market 数据，11层）
 data/KG_00_registry.json   지식 그래프 등록부
 notebooks/                 실습 노트북 (출력 제거, 정답 변환 오류 'No': 1 → 0 수정)
 build/                     빌드 (python3 build/build.py)
@@ -152,4 +157,5 @@ docs/                      검토 보고서 · 그림 지시문
 
 - 2·3 层的数字已用 rides.csv · payments.csv 按与讲义相同的设置**重新运行确认**。与讲义示例不同之处，已在页面的「与原始资料不同的值」框中说明。
 - 5~10 层的分数照搬了各讲义报告的运行结果。
+- 11 层的数字是制作本网站时用 fishmarket_practice.csv **亲自运行**的值。讲义的表格·图表是课堂用虚拟数值，不同之处已在「与原始资料不同的值」框中说明。
 - 页面内实验的部分点分布是说明用模型，已在页脚标注。
