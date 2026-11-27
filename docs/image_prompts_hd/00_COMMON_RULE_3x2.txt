@@ -1,0 +1,17 @@
+HIGH-RESOLUTION 16-bit RPG pixel art (SNES / late-16-bit style with fine detail), crisp hard pixel edges, no anti-aliasing, no blur, no painterly smoothing, limited palette of about 48 colors.
+FINE PIXEL GRID: native canvas 600x400 pixels, every art pixel = exactly 2x2 screen pixels, final image 1200x800 (3:2). Do NOT use a coarse 300x200 grid.
+Characters about 110-140 native pixels tall with readable eyes, hands and clothing folds; buildings with individual window frames; small props drawn with care.
+Deliver as lossless PNG at 1200x800 or larger (2400x1600 welcome). No JPEG artifacts, no upscaling filter.
+Bright white-and-pale-sky-blue background, clean daylight research-building mood.
+ABSOLUTELY NO text, letters, numbers, question marks, logos or signs anywhere in the image.
+Characters must match the attached reference sprites exactly (faces, hair, outfits, colors). Do not add a white robot.
+Cast (use only those named in each prompt):
+- Doctor: man with thin teal square glasses, swept-back black-and-white hair tied in a short ponytail, white lab coat.
+- Assistant Haru: girl with long pink hair in two buns with a navy streak, white lab coat, jeans.
+- Fruit-fly researcher: small humanoid fruit fly with big red compound eyes, white lab coat over black vest, black gloves.
+- Abacus Bot: boxy beige robot with a green screen face showing sparkly eyes, holding a wooden abacus.
+- Intern Sia: girl with long straight black hair and side-swept bangs, dark dress with white collar.
+- Intern Moa: girl with long light-brown hair, white ribbon and checkered ribbon above the ears, cream outfit with red bow.
+- X1 / X2 / X3: mysterious dark silhouettes; X1 has a pink ribbon, X2 a teal glasses glint, X3 a small yellow bell.
+Height order: Doctor >= Haru > Abacus Bot > Fruit fly (fruit fly is the smallest).
+Team colors: Fruit-fly team = red accents (Sia, X1, X2); Abacus-Bot team = teal accents (Moa, Haru, X3).

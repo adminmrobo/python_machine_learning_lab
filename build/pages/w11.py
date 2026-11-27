@@ -10,8 +10,8 @@ toc='질문으로 나누는 나무, 투표하는 숲, 내리막을 걷는 학습
 kicker='파이썬 머신러닝 · 11층 · 11주차 · 나무와 숲, 그리고 스스로 배우는 법',
 question='“이 물고기는 대략 몇 그램일까?” — 사람은 질문으로 짐작하고, 모델은 틀린 만큼 고치며 배운다.',
 desc='파이썬 머신러닝 11주차: Fish Market 데이터 159마리로 의사결정나무(질문으로 나누기·과적합·가지치기), 랜덤포레스트와 앙상블(다시 뽑기·투표), 손실과 경사하강법(학습률), 배치와 에포크(조기 종료), 생성형 AI 프롬프트 실습까지.',
-cover_alt='11층 어시장 연구실. 얼음 위 물고기 저울 옆에 질문 표지판이 달린 나무 한 그루와 작은 숲 모형, 골짜기로 내려가는 공 그래프 화면이 있고 연구소 식구들이 서 있는 픽셀 그림',
-intro='<p>오늘 질문은 하나입니다. <b>“이 물고기는 대략 몇 그램일까?”</b> 시장에서 잰 물고기 159마리의 기록(품종·길이·높이·두께·무게)으로 다섯 곳을 차례로 들릅니다. ① 데이터 읽기 ② 질문으로 나누는 <b>나무 한 그루</b> ③ 여러 나무가 투표하는 <b>숲</b> ④ 틀린 만큼 고치며 내려가는 <b>경사하강법</b> ⑤ 한 입씩 먹는 <b>배치</b>와 한 바퀴 도는 <b>에포크</b>. 마지막에는 생성형 AI에게 다섯 번 이어 물어 차트를 직접 만듭니다.</p>',
+cover_alt='노란 비계와 크레인 고리가 아직 남은 11층 옥상에서, 빈 액자 자재와 주황 고깔 사이로 연구소 식구 아홉이 나란히 선 픽셀 그림 (11층 새 표지는 준비 중)',
+intro='<p>오늘 질문은 하나입니다. <b>“이 물고기는 대략 몇 그램일까?”</b> 실제로 잡아 잰 물고기 159마리의 기록(품종·길이·높이·두께·무게 — 1917년 핀란드 랭겔매베시 호수 어획 조사)으로 다섯 곳을 차례로 들릅니다. ① 데이터 읽기 ② 질문으로 나누는 <b>나무 한 그루</b> ③ 여러 나무가 투표하는 <b>숲</b> ④ 틀린 만큼 고치며 내려가는 <b>경사하강법</b> ⑤ 한 입씩 먹는 <b>배치</b>와 한 바퀴 도는 <b>에포크</b>. 마지막에는 생성형 AI에게 다섯 번 이어 물어 차트를 직접 만듭니다.</p>',
 first3=('물고기 무게를 맞히는 두 가지 방법을 봅니다. 질문을 골라 나누는 <b>나무·숲</b>, 틀린 만큼 숫자를 조금씩 고치는 <b>경사하강법</b>.',
         '두 방법 모두 같은 적을 막습니다 — 본 데이터만 <b>외우는 것(과적합)</b>. 가지치기, 숲의 투표, 에포크 제한이 모두 그 장치입니다.',
         '가격 매기기, 입고 계획, 공장 불량 판정처럼 “여러 판단을 모아 하나로 결정”하는 일이 모두 같은 구조입니다.'),
@@ -34,7 +34,7 @@ steps=[
 dict(id='lv1', short='데이터 읽기', title='모든 데이터는 세 질문으로 읽는다 — 얼마나? 어떤 종류? 무엇이 궁금한가?', concept='표 읽기와 질문 먼저', en='reading a table and asking the question first', cid='lab:concept/question-first',
  tag='방법: 행 · 열 · 막대 차트 · 이상한 값 찾기', analogy='반 명단 훑어보기', sim='품종별 마리 수 · 평균 무게',
  scenes=[('조별발표','초파리팀','발표: X1')],
- situation='시장 주인이 기록장을 건넵니다. “물고기 159마리를 재 두었는데, 이걸로 무게를 짐작할 수 있겠소?” 무엇부터 봐야 할까요? 그림부터 그리면 답 없는 보고서가 됩니다. 질문이 먼저입니다.',
+ situation='시장 주인이 기록장을 건넵니다. “물고기 159마리를 재 두었는데, 이걸로 무게를 짐작할 수 있겠소?” (이 기록은 실제로 1917년 핀란드 랭겔매베시 호수에서 잡은 물고기를 잰 것으로, 통계 교육용 공개 데이터로 널리 쓰입니다.) 무엇부터 봐야 할까요? 그림부터 그리면 답 없는 보고서가 됩니다. 질문이 먼저입니다.',
  why=dict(problem='처음 보는 표에서 무엇을 예측할 수 있는지 알고 싶습니다.', limit='표를 열자마자 아무 차트나 그리면, 차트는 많은데 답하는 문장이 없습니다.', solution='세 질문으로 읽습니다. <b>얼마나?</b>(길이 몇 cm, 무게 몇 g — 숫자 열) · <b>어떤 종류?</b>(품종 — 나누는 열) · <b>무엇이 궁금한가?</b>(오늘은 “무게”). 그다음 마리 수와 이상한 값을 확인합니다.', easy='반 명단을 받으면 몇 명인지, 어느 모둠이 큰지, 이름이 빈 사람은 없는지부터 봅니다.'),
  math=dict(q='Length1, Length2, Length3는 뭐가 달라요? 다 길이 아니에요?', school='측정 단위와 기준점. 같은 대상을 어디부터 어디까지 재느냐가 다릅니다.',
    eq='한 행 = 물고기 한 마리 · 한 열 = 잰 항목 하나', rows=[('Length1','입 끝 ~ 꼬리가 시작하는 곳 (cm)'),('Length2','입 끝 ~ 꼬리가 갈라진 곳 (cm) — 오늘은 이것을 “몸길이”로 씀'),('Length3','입 끝 ~ 꼬리 끝 (cm)'),('Height · Width','등 높이 · 옆 두께 (cm)'),('Weight','무게 (g) — 오늘 맞힐 값')],
@@ -53,6 +53,7 @@ dict(id='lv1', short='데이터 읽기', title='모든 데이터는 세 질문�
  limit='표를 읽고 질문을 정했습니다. 이제 사람처럼 “만약 ~라면” 질문을 이어 붙여 무게를 짐작해 봅니다.', limit_label='아직 예측은 하지 않음',
  changed='교안 6~8쪽의 표·막대·히트맵(Sea Perch 48마리, 요일별 입고 등)은 수업용 가상 수치입니다. 이 페이지는 실제 Fish Market 데이터로 다시 그렸고, 요일 정보는 이 데이터에 없어 히트맵은 넣지 않았습니다.',
  code=[('df = pd.read_csv("fishmarket_practice.csv")','표 불러오기'),('df["Species"].value_counts()','품종별 마리 수'),('df[df["Weight"] <= 0]','무게 0 이하인 이상한 기록 찾기'),('df.groupby("Species")["Weight"].mean()','품종별 평균 무게')],
+ check=dict(title='여기까지 됐나요?', items=['표의 한 행을 물고기 한 마리로 읽는다','막대 차트의 제목이 질문에 답하도록 고친다 (“농어가 가장 많다”)','무게 0g 같은 말이 안 되는 기록을 찾아 뺀다'], ask='열 이름 하나하나를 쉬운 말로 다시 설명해 줘.'),
  quiz=[dict(q='표에서 “한 행”은 무엇을 뜻하나요?',o=['잰 항목 하나','물고기 한 마리','품종 하나','무게의 평균'],a=1,why='가로 한 줄이 물고기 한 마리의 기록입니다. 세로 한 줄(열)이 잰 항목입니다.'),
        dict(q='몸길이 20.5cm 로치의 무게가 0g으로 적혀 있습니다. 가장 알맞은 처리는?',o=['그대로 둔다','평균에 맞춰 0g이 되도록 다른 값도 바꾼다','잘못 적힌 기록으로 보고 빼거나 다시 확인한다','로치를 모두 뺀다'],a=2,why='물리적으로 말이 안 되는 값은 측정·입력 실수입니다. 그 한 줄만 빼거나 원자료를 다시 확인합니다.')]),
 dict(id='lv2', short='나무 한 그루', title='질문으로 나누는 나무 — 데이터가 고른 첫 질문은 “두께”였다', concept='의사결정나무 회귀와 과적합', en='decision tree regression and overfitting', cid='lab:concept/decision-tree-regression',
@@ -72,7 +73,7 @@ dict(id='lv2', short='나무 한 그루', title='질문으로 나누는 나무 �
        ('fly','arms','본 물고기 점수야. 아래에서 깊이를 바꿔 학습과 시험이 얼마나 벌어지는지 봐.')],
  panel='<div class="ctrl"><label class="sl"><span>두께</span><input type="range" id="tW" min="1" max="8.2" step="0.05" value="4.2"><b id="tWv">4.20cm</b></label><label class="sl"><span>몸길이</span><input type="range" id="tL" min="8" max="64" step="0.5" value="22"><b id="tLv">22.0cm</b></label></div><canvas class="cv" id="treeCv" style="height:250px"></canvas><div class="insight" id="treeOut"></div><div class="ctrl" id="depB" style="margin-top:12px"></div><div class="tbl"><table id="depT"></table></div>',
  panel_title='직접 해 보기 — 물고기 한 마리를 나무에 태우기 · 깊이 바꾸기 (실제 데이터로 학습한 나무)',
- explain='<p>① 손잡이로 두께·몸길이를 바꾸면 물고기가 질문에 답하며 내려가 잎 하나에 앉습니다. 그 잎의 평균 무게가 예측입니다. ② 깊이 버튼: 깊이 1 → 2 → 3 → 4로 갈수록 학습과 시험 점수가 함께 오릅니다. 제한을 없애면 학습은 1.000으로 끝까지 오르지만 시험은 0.923에서 멈춥니다. ③ 가지치기는 “점수를 무조건 올리는 버튼”이 아니라 <b>읽을 수 있는 크기로 줄이고, 외운 부분을 덜어 내는 선택</b>입니다.</p>',
+ explain='<p>① 손잡이로 두께·몸길이를 바꾸면 물고기가 질문에 답하며 내려가 잎 하나에 앉습니다. 그 잎의 평균 무게가 예측입니다. ② 깊이 버튼을 누르면 그림도 그 깊이의 나무로 바뀝니다(깊이 3까지): 깊이 1 → 2 → 3 → 4로 갈수록 학습과 시험 점수가 함께 오릅니다. 제한을 없애면 학습은 1.000으로 끝까지 오르지만 시험은 0.923에서 멈춥니다. ③ 깊이 1에서 격차가 −0.031(시험이 학습보다 높음)인 것은 시험용 40마리가 우연히 맞히기 쉬운 쪽에 몰렸기 때문입니다. 시험 마리 수가 적으면 이런 일이 생깁니다 — 그래서 3층에서 교차검증으로 여러 번 나눠 봅니다. ④ 가지치기는 “점수를 무조건 올리는 버튼”이 아니라 <b>읽을 수 있는 크기로 줄이고, 외운 부분을 덜어 내는 선택</b>입니다.</p>',
  interp='가격표를 만든다면 깊이 2~3 나무를 그대로 규칙으로 쓸 수 있습니다: “두께 5.15cm 이하이고 몸길이 25.8cm 이하면 약 100g대.” 질문 104개짜리 나무는 정확해 보여도 가격표로는 못 씁니다.',
  limit='나무 한 그루는 데이터를 조금만 바꿔도 아래쪽 질문과 기준값이 바뀝니다. 한 사람의 의견이 흔들리면? 여러 사람을 모아 투표합니다.', limit_label='데이터가 바뀌면 흔들림',
  changed='교안 17쪽의 “깊은 나무 1,743g vs 짧은 나무 900g(진짜 880g)” 비교와 12~13쪽 “길이 ≥ 40cm?” 나무는 설명용 가상 예시입니다. 실제 데이터에서는 첫 질문이 두께였고, 이 데이터에서는 제한 없는 나무의 시험 점수(0.923)가 깊이 3(0.886)보다 높았습니다. 섞어서 5번 나눈 교차검증도 깊이 2 0.822 · 깊이 3 0.907 · 제한 없음 0.941로 같은 순서입니다.',
@@ -96,12 +97,14 @@ dict(id='lv3', short='숲과 투표', title='나무 한 그루가 아니라 숲�
        ('x3','wow','그럼 숲의 힘은 “그루 수”보다 “서로 다르게 틀리기”에서 나오는 거네요.')],
  panel='<div class="ctrl"><label class="sl"><span>나무 수</span><input type="range" id="nT" min="0" max="4" step="1" value="0"><b id="nTv">1그루</b></label></div><canvas class="cv" id="forCv" style="height:230px"></canvas><div class="insight" id="forOut"></div>',
  panel_title='직접 해 보기 — 나무 수와 시험 R² (실제 데이터로 학습한 숲)',
+ field=('공장에서는 —','생산 라인의 부품 하나를 크기 · 표면 · 무게 센서 세 개가 각자 판단합니다. 오늘은 표면 센서만 “의심”, 나머지 둘은 “정상”. 규칙은 “의심이 두 개 이상이면 라인에서 내린다” — 그래서 통과시키되 표본 검사 목록에 올립니다. 센서 하나의 실수에 휘둘리지 않는 것, 숲의 투표와 같은 구조입니다.'),
  explain='<p>① 1그루(0.883)에서 5그루(0.928), 20그루(0.949)로 늘 때 크게 오르고, 그 뒤로는 0.951까지 조금만 오릅니다. ② 숲 300그루의 학습 R²는 0.995, 시험 0.951, 평균 오차 <b>51g</b>. 다시 뽑기에서 빠진 기록으로 매긴 점수(OOB)도 0.964입니다. ③ 나무를 늘려도 과적합이 커지지는 않지만, 계산 시간은 늘어납니다. 그루 수도 사람이 정하는 하이퍼파라미터입니다.</p>',
  interp='보고서: “숲 300그루로 새 물고기 무게를 평균 51g 오차로 예측(시험 R² 0.951). 판단에 가장 크게 쓰인 특성은 두께(중요도 0.74), 다음이 몸길이(0.22).”',
  limit='나무와 숲은 질문을 고르는 방식이었습니다. 이제 전혀 다른 방식 — 숫자를 조금씩 고쳐 가며 배우는 방식을 봅니다.', limit_label='숫자를 고치며 배우는 방식은 아직',
  changed='교안 18쪽의 “데이터 A·B·C마다 첫 질문이 바뀐다”는 설명용 예시입니다. 실제 데이터로 세 번 다시 뽑아 보면 첫 질문은 세 번 모두 두께였고 기준값만 5.09 ~ 5.17cm로 조금 움직였으며, 아래쪽 질문이 더 크게 달라졌습니다. 교안 20쪽의 다섯 나무 답(820~1,010g, 평균 888g)도 가상 수치입니다.',
  aicheck='<p>AI에게 “랜덤포레스트로 예측해 줘”라고만 하면 학습 점수(0.995)만 보여 주는 경우가 있습니다. “학습·시험 R²와 시험 평균 오차(g)를 표로, 나무 수 1 · 20 · 300일 때를 비교해 줘”라고 범위를 정해 다시 물으세요.</p>',
  code=[('RandomForestRegressor(n_estimators=300)','나무 300그루 숲'),('bootstrap=True (기본값)','기록을 다시 뽑아 나무마다 다른 명단'),('max_features','질문할 때 고를 수 있는 특성 수 제한'),('rf.feature_importances_','특성 중요도 (두께 0.74 · 몸길이 0.22)')],
+ check=dict(title='나무와 숲, 설명돼?', items=['나무는 질문으로 나누고, 잎에 답을 적는 것','너무 깊으면 외우기 시작 — 과적합','숲은 나무마다 데이터와 질문을 다르게 주고 평균(투표)을 낸다'], ask='과적합이 왜 생기는지 친구에게 설명하듯 다시 말해 줘.'),
  quiz=[dict(q='랜덤포레스트가 나무를 서로 다르게 키우는 두 가지 방법은?',o=['깊이와 잎 수를 다르게','기록을 다시 뽑기 + 고를 수 있는 질문(특성) 제한','학습률과 에포크를 다르게','정답을 섞어 주기'],a=1,why='부트스트랩으로 나무마다 다른 명단을 보고, 질문할 때마다 고를 수 있는 특성을 제한합니다.'),
        dict(q='나무 네 그루의 오차가 +150, −120, +80, −90g입니다. 평균의 오차는? (계산)',o=['+5g','+110g','−20g','+440g'],a=0,why='(150 − 120 + 80 − 90) ÷ 4 = 20 ÷ 4 = +5g. 위아래 실수가 서로 당겨 줍니다.')]),
 dict(id='lv4', short='내리막 걸음', title='처음엔 전부 틀린다 — 손실과 경사하강법, 걸음 크기(학습률)', concept='손실과 경사하강법', en='loss and gradient descent with learning rate', cid='lab:concept/gradient-descent',
@@ -121,16 +124,17 @@ dict(id='lv4', short='내리막 걸음', title='처음엔 전부 틀린다 — �
        ('sia','think','그러면 30바퀴로는 바닥 근처에도 못 가요. 손잡이로 0.01을 보면 곡선이 거의 평평하게 내려가요.')],
  panel='<div class="ctrl"><button type="button" class="bt" data-lr="0.01">0.01 (작음)</button><button type="button" class="bt primary" data-lr="0.1">0.1 (적당)</button><button type="button" class="bt" data-lr="0.5">0.5</button><button type="button" class="bt" data-lr="1.02">1.02 (너무 큼)</button><label class="sl"><span>학습률</span><input type="range" id="lrR" min="-2.3" max="0.02" step="0.01" value="-1"><b id="lrV">0.10</b></label></div><canvas class="cv" id="gdCv" style="height:240px"></canvas><div class="insight" id="gdOut"></div>',
  panel_title='직접 해 보기 — 학습률과 손실 곡선 (실제 158마리로 브라우저에서 계산)',
- explain='<p>① 가로축은 바퀴(에포크), 세로축은 손실입니다. 회색 점선이 바닥(13,380)입니다. ② 0.01은 30바퀴 뒤에도 한참 위, 0.1은 차분히 바닥 근처에 안착, 1.02는 위로 튀어 나갑니다(그래프 위쪽 빨간 표시). ③ 바닥이 0이 아닌 이유: 부피 지표 하나로 만든 직선 규칙의 한계입니다. 모델을 바꾸지 않으면 걸음을 아무리 잘 골라도 그 아래로는 못 내려갑니다.</p>',
- interp='학습 결과: 무게 ≈ 401 + 337 × (표준화한 부피 지표). 바닥 손실 13,380 → 평균 약 116g 빗나감. 숲(평균 오차 51g)보다는 크지만, 이 방식은 신경망 학습의 기본 동작입니다.',
+ explain='<p>① 가로축은 바퀴(에포크), 세로축은 손실입니다. 회색 점선이 바닥(13,380)입니다. ② 0.01은 30바퀴 뒤에도 한참 위, 0.1은 차분히 바닥 근처에 안착, 1.02는 위로 튀어 나갑니다(그래프 위쪽 빨간 표시). ③ <b>표준화</b>란 값에서 평균을 빼고 흩어진 정도(표준편차)로 나눠 “평균 0, 크기 1 안팎”으로 맞추는 것입니다. 단위가 달라도 걸음 크기를 똑같이 쓸 수 있게 해 줍니다. ④ 바닥이 0이 아닌 이유: 부피 지표 하나로 만든 직선 규칙의 한계입니다. 모델을 바꾸지 않으면 걸음을 아무리 잘 골라도 그 아래로는 못 내려갑니다.</p>',
+ interp='학습 결과: 무게 ≈ 401 + 337 × (표준화한 부피 지표). 위젯의 바닥 손실 13,380은 158마리 전체로 잰 값(RMSE 약 116g)입니다. 나무 · 숲과 같은 잣대 — 학습 118마리로 배우고 처음 보는 40마리로 시험 — 로 다시 재면 평균 오차(MAE) <b>64g</b>, 시험 R² 0.937: 깊이 3 나무(83g)보다 낫고 숲(51g)보다는 못합니다. 무게가 대체로 “길이 × 높이 × 두께”에 비례하기 때문에 직선 하나로도 꽤 맞습니다.',
  limit='지금은 매 걸음 158마리를 모두 봤습니다. 데이터가 수백만 개라면? 한 걸음마다 일부만 보고, 몇 바퀴 돌지 정해야 합니다.', limit_label='걸음마다 전체를 봄',
  code=[('loss = ((w * x + b - y) ** 2).mean()','손실 = 평균 제곱 오차'),('w = w - lr * 2 * ((w * x + b - y) * x).mean()','기울기 반대로 한 걸음 (w)'),('b = b - lr * 2 * (w * x + b - y).mean()','기울기 반대로 한 걸음 (b)'),('SGDRegressor(learning_rate="constant", eta0=0.1)','scikit-learn의 경사하강법 회귀')],
+ check=dict(title='내리막길, 따라왔어?', items=['손실이란 틀림의 총량을 숫자 하나로 만든 것','경사하강법은 기울기만 보고 한 걸음씩 내려가는 것','걸음이 크면 튕겨 나가고, 작으면 늦게 도착한다'], ask='경사하강법을 친구에게 설명하듯, 비유 하나만 붙여서 다시 말해 줘.'),
  quiz=[dict(q='학습률(걸음)이 너무 클 때 흔히 일어나는 일은?',o=['손실이 아주 천천히 줄어든다','골짜기를 건너뛰며 손실이 흔들리거나 커진다','손실이 0이 된다','데이터가 늘어난다'],a=1,why='한 걸음이 너무 커서 바닥을 지나쳐 반대편으로 튑니다. 학습률 1.02에서 손실이 바퀴마다 커졌습니다.'),
        dict(q='진짜 300g인 물고기를 700g으로 예측했습니다. 이 한 마리의 제곱 오차는? (계산)',o=['400','160,000','1,000','490,000'],a=1,why='700 − 300 = 400, 400² = 160,000.')]),
 dict(id='lv5', short='배치·에포크', title='한 입씩, 한 바퀴씩 — 배치 · 에포크, 그리고 멈출 곳', concept='배치와 에포크, 조기 종료', en='mini-batch, epoch and early stopping', cid='lab:concept/batch-epoch',
  tag='방법: 미니배치 경사하강법 · 학습 곡선 · 조기 종료', analogy='밥 한 입과 밥상 한 번', sim='훈련 · 검증 오차 곡선과 멈출 에포크',
  scenes=[('조별발표','주판봇팀','발표: X3')],
- situation='공장 품질 검사는 부품을 모두 재지 않습니다. 한 시간에 30개만 꺼내 정밀 측정하고(표본), 결과대로 기계를 조금 조정하고, 또 반복합니다. 모델 학습도 같습니다. 한 걸음에 몇 개를 보고, 전체를 몇 바퀴 돌아야 할까요?',
+ situation='(이 단계의 곡선은 <b>신경망</b>으로 그렸습니다. 신경망은 4단계의 경사하강법으로 숫자 수만 개를 한꺼번에 고치는 모델입니다 — 지금은 몰라도 됩니다. 곡선 두 개만 보세요.) 공장 품질 검사는 부품을 모두 재지 않습니다. 한 시간에 30개만 꺼내 정밀 측정하고(표본), 결과대로 기계를 조금 조정하고, 또 반복합니다. 모델 학습도 같습니다. 한 걸음에 몇 개를 보고, 전체를 몇 바퀴 돌아야 할까요?',
  why=dict(problem='데이터가 많을 때도 빠르게, 그러나 외우지 않을 만큼만 학습하고 싶습니다.', limit='4단계는 걸음마다 전체를 봤고, 몇 바퀴에서 멈출지는 정하지 않았습니다.', solution='<b>배치</b>: 한 걸음마다 보는 데이터 일부(한 입). <b>에포크</b>: 전체 데이터를 한 번씩 다 본 횟수(밥상 한 번). 158마리를 32마리씩 보면 한 에포크에 5걸음입니다. 그리고 <b>훈련 오차</b>와 <b>새 데이터(검증) 오차</b>를 함께 그려, 검증 오차가 다시 오르기 시작하면 멈춥니다(<b>조기 종료</b>).', easy='책을 통째로 외우지 않고 몇 쪽씩 읽으며 요약을 고쳐 갑니다. 읽은 양은 같아도 요약을 고치는 횟수가 달라집니다.'),
  math=dict(q='배치 32, 에포크 30이면 걸음은 모두 몇 번이에요?', school='나눗셈과 올림. 한 바퀴 걸음 수 = 데이터 수 ÷ 배치 크기 (나머지가 있으면 한 걸음 더).',
    eq='한 에포크의 걸음 수 = ⌈데이터 수 ÷ 배치 크기⌉ · 전체 걸음 = 걸음 수 × 에포크', rows=[('전체 한 번에 (배치 = 158)','한 에포크 1걸음 — 안정적 · 느림'),('여러 개씩 (배치 = 32)','한 에포크 5걸음 — 실전에서 가장 흔함'),('하나씩 (배치 = 1)','한 에포크 158걸음 — 빠르게 움직이지만 흔들림'),('조기 종료','검증 오차가 가장 낮은 에포크에서 멈춤')],
@@ -144,7 +148,8 @@ dict(id='lv5', short='배치·에포크', title='한 입씩, 한 바퀴씩 — �
        ('fly','arms','그동안 검증 오차는 3,592에서 6,526으로 거의 두 배가 됐어. 나무의 가지치기랑 같은 이야기야.')],
  panel='<div class="ctrl"><label class="sl"><span>멈출 에포크</span><input type="range" id="epR" min="2" max="400" step="2" value="400"><b id="epV">400</b></label><button type="button" class="bt" id="epBest">가장 낮은 곳 찾기</button></div><canvas class="cv" id="epCv" style="height:240px"></canvas><div class="insight" id="epOut"></div><div class="ctrl" style="margin-top:10px"><span style="font-size:14px;color:#5b6874">배치 크기 (158마리 · 5에포크):</span><button type="button" class="bt" data-b="158">158 (전체)</button><button type="button" class="bt primary" data-b="32">32</button><button type="button" class="bt" data-b="1">1</button></div><div class="insight" id="bOut"></div>',
  panel_title='직접 해 보기 — 훈련 · 검증 오차 곡선과 멈출 곳 (실제로 학습한 신경망의 기록)',
- explain='<p>① 파랑(훈련)은 끝까지 내려가고, 주황(검증)은 한 번 꺾여 다시 오릅니다. 두 곡선이 벌어지기 시작하는 곳 이전은 “배우는 중”, 이후는 “외우는 중”입니다. ② “가장 낮은 곳 찾기”를 누르면 48에포크로 갑니다. 실전에서는 검증 오차가 몇 에포크 연속 나아지지 않으면 자동으로 멈추게 합니다. ③ 배치 버튼: 배치가 작을수록 같은 5에포크에 걸음이 많고(빨리 내려감), 대신 걸음마다 흔들립니다.</p>',
+ field=('공장에서는 —','품질 검사는 부품을 모두 재지 않습니다. 한 시간에 30개만 꺼내 정밀 측정하고(이 30개가 배치), 결과대로 온도 · 압력을 조금 고치고, 다음 시간에 또 반복합니다. 표본을 늘리면 정확해지지만 검사가 느려집니다 — 학습에서 배치 크기를 고를 때와 똑같은 교환입니다.'),
+ explain='<p>① 이 곡선은 <b>신경망</b>(4단계의 경사하강법으로 숫자 수만 개를 한꺼번에 고치는 모델 — 지금은 몰라도 됩니다)의 기록입니다. 파랑(훈련)은 끝까지 내려가고, 주황(검증)은 한 번 꺾여 다시 오릅니다. 두 곡선이 벌어지기 시작하는 곳 이전은 “배우는 중”, 이후는 “외우는 중”입니다. ② “가장 낮은 곳 찾기”를 누르면 48에포크로 갑니다. 실전에서는 검증 오차가 몇 에포크 연속 나아지지 않으면 자동으로 멈추게 합니다. ③ 배치 버튼: 배치가 작을수록 같은 5에포크에 걸음이 많고(빨리 내려감), 대신 걸음마다 흔들립니다.</p>',
  interp='보고서: “48에포크에서 멈추면 검증 오차 3,592(평균 약 60g). 400에포크까지 돌리면 검증 오차가 82% 커짐 — 조기 종료로 학습 시간도 88% 줄임.”',
  limit='오늘 배운 모든 장치 — 가지치기, 숲의 투표, 에포크 제한 — 는 결국 과적합 하나를 막기 위한 것이었습니다. 이제 생성형 AI로 직접 차트를 만들어 봅니다.', limit_label='직접 해 보기는 아직',
  changed='교안 36쪽의 교차 곡선은 설명용 그림입니다. 이 페이지의 곡선은 실제 데이터로 학습한 신경망의 기록이며, 과적합이 잘 보이도록 학습 데이터를 40마리로 일부러 줄였습니다.',
@@ -189,12 +194,13 @@ duel=dict(q='읽을 수 있는 나무 한 그루 vs 숲 300그루',
  run='return {fly:0.886,robo:0.951,flyTxt:"0.886 (오차 83g)",roboTxt:"0.951 (오차 51g)"};',
  announce='return "깊이 3 나무 <b>0.886</b>(평균 오차 83g), 숲 300그루 <b>0.951</b>(평균 오차 51g). 숲이 평균 32g 덜 틀렸어요.";',
  verdict='return "주판봇팀 승. 단, 숲이 이긴 이유는 그루 수가 커서가 아니라 <b>서로 다르게 틀린 나무들의 평균</b>이라서입니다 — 20그루만으로 0.949였어요. 대신 숲은 규칙을 한눈에 읽을 수 없으니, 가격표처럼 설명이 필요한 곳에는 초파리팀의 나무가 여전히 쓸모 있습니다.";'),
-summary='''<div class="tbl"><table><thead><tr><th>모델</th><th>학습 R²</th><th>시험 R²</th><th>시험 평균 오차</th><th>한 줄 평</th></tr></thead><tbody>
-<tr><td>평균만 답하기 (401g)</td><td>0</td><td>—</td><td>약 357g (RMSE)</td><td>출발점</td></tr>
-<tr><td>경사하강법 직선 (부피 지표 하나)</td><td>0.895</td><td>—</td><td>약 116g (RMSE)</td><td>걸음으로 배운 규칙, 바닥 손실 13,380</td></tr>
-<tr><td>나무 깊이 3</td><td>0.960</td><td>0.886</td><td>83g</td><td>읽을 수 있는 규칙</td></tr>
-<tr><td>나무 제한 없음 (잎 104개)</td><td>1.000</td><td>0.923</td><td>58g</td><td>본 물고기를 모두 외움</td></tr>
-<tr><td>숲 300그루</td><td>0.995</td><td><b>0.951</b></td><td><b>51g</b></td><td>서로 다르게 틀린 나무의 평균</td></tr></tbody></table></div>
+summary='''<p style="font-size:14px;color:#5b6874">모든 모델을 같은 잣대로 잽니다 — 학습 118마리로 배우고, 처음 보는 40마리로 시험(random_state=42). MAE는 평균적으로 몇 g 빗나가나, RMSE는 크게 틀린 것에 더 벌을 준 오차입니다.</p>
+<div class="tbl"><table><thead><tr><th>모델</th><th>학습 R²</th><th>시험 R²</th><th>시험 MAE</th><th>시험 RMSE</th><th>한 줄 평</th></tr></thead><tbody>
+<tr><td>평균만 답하기 (389g)</td><td>0.000</td><td>−0.016</td><td>313g</td><td>365g</td><td>출발점</td></tr>
+<tr><td>경사하강법 직선 (부피 지표 하나)</td><td>0.879</td><td>0.937</td><td>64g</td><td>91g</td><td>걸음으로 배운 규칙 하나</td></tr>
+<tr><td>나무 깊이 3</td><td>0.960</td><td>0.886</td><td>83g</td><td>122g</td><td>읽을 수 있는 규칙</td></tr>
+<tr><td>나무 제한 없음 (잎 104개)</td><td>1.000</td><td>0.923</td><td>58g</td><td>100g</td><td>본 물고기를 모두 외움</td></tr>
+<tr><td>숲 300그루</td><td>0.995</td><td><b>0.951</b></td><td><b>51g</b></td><td><b>80g</b></td><td>서로 다르게 틀린 나무의 평균</td></tr></tbody></table></div>
 <div class="cards"><div><b>오늘의 세 줄</b>① 나무는 질문으로 나눈다 ② 숲은 틀림을 서로 상쇄시킨다 ③ 배움은 걸음(학습률) · 한 입(배치) · 바퀴(에포크)의 조절이다</div><div><b>과적합을 막는 장치</b>가지치기(깊이 제한) · 숲의 투표 · 에포크 제한(조기 종료) — 모두 “본 데이터만 외우기”를 막는다</div></div>''',
 outro=[('doc','verdict','오늘의 세 줄: ① 나무는 질문으로 나눈다 ② 숲은 틀림을 서로 상쇄시킨다 ③ 배움은 걸음 · 한 입 · 바퀴의 조절이다.'),
        ('robo','happy','드디어 이겼다! 그런데… 300그루가 아니라 20그루여도 이겼겠네.'),
@@ -214,6 +220,8 @@ gloss={'의사결정나무':('의사결정나무','용어','“만약 ~라면”
  '학습률':('학습률','용어','경사하강법의 한 걸음 크기. 너무 크면 튕기고 너무 작으면 느리다.','learning-rate','lv4'),
  '배치':('배치','용어','한 걸음마다 보는 데이터 일부. 배치 32 = 한 번에 32개를 보고 한 걸음.','batch','lv5'),
  '에포크':('에포크','용어','전체 데이터를 한 번씩 다 본 횟수. 한 바퀴.','epoch','lv5'),
+ '표준화':('표준화','용어','값에서 평균을 빼고 표준편차로 나눠 평균 0, 크기 1 안팎으로 맞추는 것. 단위가 다른 특성을 같은 잣대로 다루게 한다.','standardization','lv4'),
+ '신경망':('신경망','용어','숫자(가중치) 수만 개를 경사하강법으로 한꺼번에 고치며 배우는 모델. 딥러닝의 기본 구조.','neural-network','lv5'),
  '조기 종료':('조기 종료','용어','검증 오차가 더 나아지지 않으면 학습을 멈추는 방법.','early-stopping','lv5')},
 facts=[('F01','Fish Market 데이터 159마리 · 7품종(농어 56, 도미 35, 로치 20, 강꼬치고기 17, 빙어 14, 파르키 11, 백어 6), 무게 0g 로치 1마리','재현 확인','fish','lv1','data/fishmarket_practice.csv 직접 집계'),
        ('F02','깊이 2 나무의 첫 질문은 두께 ≤ 5.15cm(평균 약 190g vs 827g), 잎 101 · 348 · 758 · 1,600g','재현 확인','fish','lv2','75:25 분할, random_state=42'),
@@ -223,9 +231,9 @@ facts=[('F01','Fish Market 데이터 159마리 · 7품종(농어 56, 도미 35, 
        ('F06','신경망(256·256, 학습 40마리): 검증 오차 최저 48에포크 3,592 · 400에포크 6,526','재현 확인','fish','lv5','MLPRegressor, random_state=0'),
        ('F07','교안의 표·차트 숫자(Sea Perch·Trout, 888g 투표 등)는 수업용 가상 수치','문헌 사실','lec11','lv1','교안 표기 「수업용 가상 데이터」')],
 refs=[dict(id='lec11',title='물고기 한 마리에서 시작하는 머신러닝 — 의사결정나무 · 랜덤포레스트 · 앙상블 · 배치 · 에포크 · 경사하강법 (45쪽)',by='안상선',issued={'date-parts':[[2026,11,26]]}),
-      dict(id='fish',title='Fish Market 데이터 (fishmarket_practice.csv, 159마리 · 7품종)',by='공개 교육용 데이터 — 이 저장소 data/ 폴더'),
+      dict(id='fish',title='Fish Catch 데이터 fishcatch (이 저장소 data/fishmarket_practice.csv, 159마리 · 7품종)',by='Journal of Statistics Education 데이터 보관소 — 원자료: Brofeldt, 핀란드 랭겔매베시 호수 어획 조사(1917)',URL='https://jse.amstat.org/datasets/fishcatch.txt'),
       dict(id='sklearn',title='scikit-learn: DecisionTreeRegressor, RandomForestRegressor, MLPRegressor',by='scikit-learn developers',URL='https://scikit-learn.org/stable/')],
-models=['모든 점수는 data/fishmarket_practice.csv(무게 0g 1마리 제외 158마리)로 이 페이지를 만들 때 직접 실행한 값입니다.','경사하강법 위젯은 “몸길이 × 높이 × 두께”를 표준화한 특성 하나로 줄인 설명용 모형이며, 158마리 실제 값으로 브라우저에서 계산합니다.','에포크 곡선은 과적합이 잘 보이도록 학습 데이터를 40마리로 줄여 학습한 신경망의 실제 기록입니다.','교안의 표·차트 숫자는 수업용 가상 수치라 이 페이지 숫자와 다릅니다.'],
+models=['11층 표지는 새 그림(어시장 연구실)을 받을 때까지 공사 중이던 옥상 그림을 그대로 씁니다.','모든 점수는 data/fishmarket_practice.csv(무게 0g 1마리 제외 158마리)로 이 페이지를 만들 때 직접 실행한 값입니다.','경사하강법 위젯은 “몸길이 × 높이 × 두께”를 표준화한 특성 하나로 줄인 설명용 모형이며, 158마리 실제 값으로 브라우저에서 계산합니다.','에포크 곡선은 과적합이 잘 보이도록 학습 데이터를 40마리로 줄여 학습한 신경망의 실제 기록입니다.','교안의 표·차트 숫자는 수업용 가상 수치라 이 페이지 숫자와 다릅니다.'],
 js=r'''
 var L=LAB,$=L.$,D=__D11__,FF=function(){return getComputedStyle(document.body).fontFamily;};
 function fmt(n){return Math.round(n).toLocaleString('ko-KR');}
@@ -238,25 +246,29 @@ function sp(){var cv=$('#spCv');if(!cv)return;var F=L.fit(cv),c=F.c,W=F.W,H=F.H;
  $('#spOut').innerHTML=mode?'평균 무게 1등은 <b>강꼬치고기 719g</b> (17마리). 마리 수 1등인 농어는 382g으로 4등입니다. 백어는 6마리뿐이라 평균이 쉽게 흔들립니다.':'마리 수 1등은 <b>농어 56마리</b>, 꼴찌는 백어 6마리. 로치는 무게 0g 기록 1마리를 빼서 19마리입니다.';}
 function spSet(m){mode=m;$('#cntB').setAttribute('aria-pressed',m?'false':'true');$('#wB').setAttribute('aria-pressed',m?'true':'false');$('#cntB').classList.toggle('primary',!m);$('#wB').classList.toggle('primary',!!m);sp();}
 $('#cntB').onclick=function(){spSet(0);};$('#wB').onclick=function(){spSet(1);};sp();window.addEventListener('resize',sp);
-/* 2 — 나무 */
+/* 2 — 나무 (실제 학습한 깊이 1 · 2 · 3 나무, 깊이 버튼과 연동) */
+var TR={"1":{"f":"Width","t":5.15,"l":{"v":190,"n":81},"r":{"v":827,"n":37}},"2":{"f":"Width","t":5.15,"l":{"f":"Length2","t":25.8,"l":{"v":101,"n":52},"r":{"v":348,"n":29}},"r":{"f":"Length2","t":54.0,"l":{"v":758,"n":34},"r":{"v":1600,"n":3}}},"3":{"f":"Width","t":5.15,"l":{"f":"Length2","t":25.8,"l":{"f":"Width","t":3.23,"l":{"v":46,"n":25},"r":{"v":152,"n":27}},"r":{"f":"Width","t":4.79,"l":{"v":306,"n":20},"r":{"v":443,"n":9}}},"r":{"f":"Length2","t":54.0,"l":{"f":"Length2","t":39.25,"l":{"v":673,"n":23},"r":{"v":937,"n":11}},"r":{"f":"Length2","t":61.7,"l":{"v":1575,"n":2},"r":{"v":1650,"n":1}}}}},TFN={Width:'두께',Length2:'몸길이'};
 var DEP=[['1',2,0.698,0.729,153],['2',4,0.907,0.827,123],['3',8,0.960,0.886,83],['4',14,0.983,0.900,73],['제한 없음',104,1.000,0.923,58]],dsel=1;
 function tree(){var cv=$('#treeCv');if(!cv)return;var w=+$('#tW').value,l=+$('#tL').value;$('#tWv').textContent=w.toFixed(2)+'cm';$('#tLv').textContent=l.toFixed(1)+'cm';
- var F=L.fit(cv),c=F.c,W=F.W,H=F.H;c.clearRect(0,0,W,H);c.font='13px '+FF();c.textAlign='center';
- var left=w<=5.15,q2=left?l<=25.8:l<=54,leaf=left?(q2?0:1):(q2?2:3),vals=[101,348,758,1600];
- var R={x:W/2,y:28},N=[{x:W*.25,y:H*.45,t:'몸길이 ≤ 25.8?'},{x:W*.75,y:H*.45,t:'몸길이 ≤ 54?'}],LF=[W*.12,W*.38,W*.62,W*.88];
- function edge(a,b,on){c.strokeStyle=on?'#a35c00':'#c9d1d9';c.lineWidth=on?4:2;c.beginPath();c.moveTo(a.x,a.y+14);c.lineTo(b.x,b.y-14);c.stroke();}
- function node(p,t,on,fill){var tw=Math.max(110,c.measureText(t).width+20);c.fillStyle=fill||(on?'#fdf3e1':'#f6f8fa');c.strokeStyle=on?'#a35c00':'#9aa5b1';c.lineWidth=2;c.fillRect(p.x-tw/2,p.y-15,tw,30);c.strokeRect(p.x-tw/2,p.y-15,tw,30);c.fillStyle='#16212b';c.fillText(t,p.x,p.y+5);}
- edge(R,N[0],left);edge(R,N[1],!left);
- LF.forEach(function(x,i){edge(N[i<2?0:1],{x:x,y:H-30},i===leaf);});
- node(R,'두께 ≤ 5.15cm?',true);node(N[0],N[0].t,left);node(N[1],N[1].t,!left);
- LF.forEach(function(x,i){node({x:x,y:H-30},'약 '+fmt(vals[i])+'g',i===leaf,i===leaf?'#e7f5ec':null);});
- c.fillStyle='#13733a';c.font='12px '+FF();c.fillText('네',(R.x+N[0].x)/2-10,(R.y+N[0].y)/2);c.fillStyle='#c9302c';c.fillText('아니오',(R.x+N[1].x)/2+16,(R.y+N[1].y)/2);
- $('#treeOut').innerHTML='두께 '+w.toFixed(2)+'cm → '+(left?'<b>네</b>(얇음)':'<b>아니오</b>(두꺼움)')+' → 몸길이 '+l.toFixed(1)+'cm → '+(q2?'네':'아니오')+' → 잎 도착: <b>약 '+fmt(vals[leaf])+'g</b>'+(leaf===3?' (학습 데이터에서 이 잎에는 강꼬치고기 큰 개체 세 마리뿐)':'');}
-function dep(){var d=DEP[dsel];$('#depT').innerHTML='<thead><tr><th>깊이</th><th>잎 수</th><th>학습 R²</th><th>시험 R²</th><th>격차</th><th>시험 평균 오차</th></tr></thead><tbody>'+DEP.map(function(r,i){return '<tr'+(i===dsel?' style="background:#fdf3e1;font-weight:700"':'')+'><td>'+r[0]+'</td><td>'+r[1]+'</td><td>'+r[2].toFixed(3)+'</td><td>'+r[3].toFixed(3)+'</td><td>'+(r[2]-r[3]).toFixed(3)+'</td><td>'+r[4]+'g</td></tr>';}).join('')+'</tbody>';
- [].forEach.call(document.querySelectorAll('#depB .bt'),function(b,i){b.classList.toggle('primary',i===dsel);b.setAttribute('aria-pressed',i===dsel?'true':'false');});}
+ var dd=Math.min(dsel+1,3),root=TR[dd],F=L.fit(cv),c=F.c,W=F.W,H=F.H;c.clearRect(0,0,W,H);c.textAlign='center';
+ var small=W<560,fs=small?10:12,lev=dd+1,gap=(H-34)/lev,path=[],leaves=[];
+ function val(f){return f==='Width'?w:l;}
+ (function walk(n){path.push(n);if(n.v===undefined)walk(val(n.f)<=n.t?n.l:n.r);})(root);
+ (function lay(n,x0,x1,d){n._x=(x0+x1)/2;n._y=18+d*gap;if(n.v===undefined){lay(n.l,x0,(x0+x1)/2,d+1);lay(n.r,(x0+x1)/2,x1,d+1);}else leaves.push(n);})(root,0,W,0);
+ leaves.forEach(function(n,i){n._y=H-18-((dd===3&&small&&i%2)?26:0);});
+ function on(n){return path.indexOf(n)>=0;}
+ (function edges(n){if(n.v!==undefined)return;[n.l,n.r].forEach(function(k){var hot=on(n)&&on(k);c.strokeStyle=hot?'#a35c00':'#c9d1d9';c.lineWidth=hot?4:2;c.beginPath();c.moveTo(n._x,n._y+12);c.lineTo(k._x,k._y-12);c.stroke();edges(k);});})(root);
+ function box(n){var t=n.v===undefined?(small?TFN[n.f]+'≤'+n.t:TFN[n.f]+' ≤ '+n.t+(n.f==='Width'?'cm?':'?')):(small?fmt(n.v)+'g':'약 '+fmt(n.v)+'g'),hot=on(n),leaf=n.v!==undefined;c.font=(hot?'700 ':'')+fs+'px '+FF();var tw=c.measureText(t).width+12;
+  c.fillStyle=leaf&&hot?'#e7f5ec':(hot?'#fdf3e1':'#f6f8fa');c.strokeStyle=hot?(leaf?'#13733a':'#a35c00'):'#9aa5b1';c.lineWidth=2;c.fillRect(n._x-tw/2,n._y-12,tw,24);c.strokeRect(n._x-tw/2,n._y-12,tw,24);c.fillStyle='#16212b';c.fillText(t,n._x,n._y+4);
+  if(n.v===undefined){box(n.l);box(n.r);}}
+ box(root);
+ var leaf=path[path.length-1],steps=path.slice(0,-1).map(function(n,i){return TFN[n.f]+' '+(n.f==='Width'?w.toFixed(2):l.toFixed(1))+'cm → '+(path[i+1]===n.l?'네':'아니오');});
+ $('#treeOut').innerHTML='깊이 '+dd+' 나무: '+steps.join(' → ')+' → 잎 도착: <b>약 '+fmt(leaf.v)+'g</b> (학습 데이터 '+leaf.n+'마리의 평균)'+(dsel>=3?'<br>깊이 '+DEP[dsel][0]+'은 잎이 '+DEP[dsel][1]+'개라 그림은 깊이 3까지만 그립니다. 점수는 아래 표에서 보세요.':'');}
+function dep(){$('#depT').innerHTML='<thead><tr><th>깊이</th><th>잎 수</th><th>학습 R²</th><th>시험 R²</th><th>격차</th><th>시험 평균 오차</th></tr></thead><tbody>'+DEP.map(function(r,i){return '<tr'+(i===dsel?' style="background:#fdf3e1;font-weight:700"':'')+'><td>'+r[0]+'</td><td>'+r[1]+'</td><td>'+r[2].toFixed(3)+'</td><td>'+r[3].toFixed(3)+'</td><td>'+(r[2]-r[3]).toFixed(3)+'</td><td>'+r[4]+'g</td></tr>';}).join('')+'</tbody>';
+ [].forEach.call(document.querySelectorAll('#depB .bt'),function(b,i){b.classList.toggle('primary',i===dsel);b.setAttribute('aria-pressed',i===dsel?'true':'false');});tree();}
 $('#depB').innerHTML='<span style="font-size:14px;color:#5b6874">나무 깊이:</span>'+DEP.map(function(r,i){return '<button type="button" class="bt" data-i="'+i+'">'+r[0]+'</button>';}).join('');
 [].forEach.call(document.querySelectorAll('#depB .bt'),function(b){b.onclick=function(){dsel=+b.dataset.i;dep();};});
-$('#tW').oninput=tree;$('#tL').oninput=tree;tree();dep();window.addEventListener('resize',tree);
+$('#tW').oninput=tree;$('#tL').oninput=tree;dep();window.addEventListener('resize',tree);
 /* 3 — 숲 */
 var FN=[[1,0.883],[5,0.928],[20,0.949],[100,0.949],[300,0.951]];
 function forest(){var k=+$('#nT').value,cv=$('#forCv');if(!cv)return;$('#nTv').textContent=FN[k][0]+'그루';var F=L.fit(cv),c=F.c,W=F.W,H=F.H;c.clearRect(0,0,W,H);c.font='12px '+FF();

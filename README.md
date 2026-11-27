@@ -60,7 +60,7 @@ weeks/wNN_*.html           층 페이지 (단일 파일)
 practice/index.html        지하 실전 연습장 (네 장면, 미션 자동 판정)
 data/rides.csv             택시 1,200건 (수업용 합성 데이터)
 data/payments.csv          결제 800건 (수업용 합성 데이터)
-data/fishmarket_practice.csv  물고기 159마리 (공개 Fish Market 데이터, 11층)
+data/fishmarket_practice.csv  물고기 159마리 (JSE fishcatch — 1917년 핀란드 랭겔매베시 호수 어획 기록, 11층)
 data/KG_00_registry.json   지식 그래프 등록부
 notebooks/                 실습 노트북 (출력 제거, 정답 변환 오류 'No': 1 → 0 수정)
 build/                     빌드 (python3 build/build.py)
@@ -140,7 +140,7 @@ weeks/wNN_*.html           층 페이지 (단일 파일)
 practice/index.html        지하 실전 연습장 (네 장면, 미션 자동 판정)
 data/rides.csv             택시 1,200건 (수업용 합성 데이터)
 data/payments.csv          결제 800건 (수업용 합성 데이터)
-data/fishmarket_practice.csv  鱼159条（公开 Fish Market 数据，11层）
+data/fishmarket_practice.csv  鱼159条（JSE fishcatch — 1917年芬兰朗厄尔迈韦西湖渔获记录，11层）
 data/KG_00_registry.json   지식 그래프 등록부
 notebooks/                 실습 노트북 (출력 제거, 정답 변환 오류 'No': 1 → 0 수정)
 build/                     빌드 (python3 build/build.py)

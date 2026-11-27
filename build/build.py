@@ -234,6 +234,8 @@ def step_html(P, i, s):
     h.append(glance_html(P, s))
     tr = tryit_html(P, s)
     if s.get('panel'): h.append('<div class="panel"><p class="ptitle">%s</p>%s%s</div>' % (s.get('panel_title', '직접 해 보기'), tr, s['panel'])); tr = ''
+    if s.get('field'):  # 현장 예시 — 접지 않고 바로 보이게
+        ft, fb = s['field']; h.append('<div class="field"><b>%s</b><p>%s</p></div>' % (ft, fb))
     if s.get('flow'):
         f = s['flow']; h.append('<div class="panel"><p class="ptitle">흐름으로 보기 — %s</p>%s<canvas class="cv flow" id="%s" style="height:%dpx" role="img" aria-label="%s"></canvas><p class="cvcap">%s</p></div>' % (f['title'], tr, f['id'], f.get('h', 230), E(f['alt']), f['cap']))
     # 천천히 읽고 싶을 때 — 접어 둔 자세한 설명
@@ -253,6 +255,8 @@ def step_html(P, i, s):
     if s.get('code'):
         rows = ''.join('<tr><td>%s</td><td>%s</td></tr>' % (E(c), m) for c, m in s['code'])
         h.append(deep('교안의 파이썬 코드로 보면', '몰라도 됩니다', '<div class="tbl"><table><thead><tr><th>코드 한 줄</th><th>뜻</th></tr></thead><tbody>%s</tbody></table></div>' % rows))
+    if s.get('check'):  # 교안의 「여기까지 됐나요?」 — 스스로 점검 3줄 + 막혔을 때 AI에게 물을 한 줄
+        c = s['check']; h.append('<div class="selfcheck"><p class="sct">✓ %s</p><ol>%s</ol><p class="ask"><b>막혔다면 이렇게 물어봐 —</b> <q>%s</q></p></div>' % (c['title'], ''.join('<li>%s</li>' % x for x in c['items']), c['ask']))
     if s.get('quiz'): h.append('<div class="quiz" data-quiz="%s"></div>' % s['id'])
     h.append('</div></section>')
     return '\n'.join(x for x in h if x)

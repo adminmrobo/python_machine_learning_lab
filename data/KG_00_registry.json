@@ -414,7 +414,8 @@
    "en": "standardization",
    "type": "Term",
    "pages": [
-    "pyml_w03"
+    "pyml_w03",
+    "pyml_w11"
    ]
   },
   "lab:work/w03deck": {
@@ -1456,6 +1457,14 @@
     "pyml_w11"
    ]
   },
+  "lab:term/neural-network": {
+   "ko": "신경망",
+   "en": "neural network",
+   "type": "Term",
+   "pages": [
+    "pyml_w11"
+   ]
+  },
   "lab:term/early-stopping": {
    "ko": "조기 종료",
    "en": "early stopping",
@@ -1473,8 +1482,8 @@
    ]
   },
   "lab:work/fish": {
-   "ko": "Fish Market 데이터 (fishmarket_practice.csv, 159마리 · 7품종)",
-   "en": "Fish Market 데이터 (fishmarket_practice.csv, 159마리 · 7품종)",
+   "ko": "Fish Catch 데이터 fishcatch (이 저장소 data/fishmarket_practice.csv, 159마리 · 7품종)",
+   "en": "Fish Catch 데이터 fishcatch (이 저장소 data/fishmarket_practice.csv, 159마리 · 7품종)",
    "type": "Work",
    "pages": [
     "pyml_w11"
